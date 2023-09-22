@@ -37,8 +37,8 @@ const ModelScreen = ({navigation, route}:NativeStackScreenProps<ModelStackParamL
     return(
         <ScrollView refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />} style={{flex:1, width:width}}>
             <ModelSection title={"Newest"} data={newestModels.results} isLoading={newestModels.loading} />
-            {/* <ModelSection title={"Most Downloaded"} data={mostDownloadedModels.results} isLoading={mostDownloadedModels.loading} />
-            <ModelSection title={"Top Rated"} data={highestRatedModels.results} isLoading={highestRatedModels.loading} /> */}
+            <ModelSection title={"Most Downloaded"} data={mostDownloadedModels.results} isLoading={mostDownloadedModels.loading} />
+            <ModelSection title={"Top Rated"} data={highestRatedModels.results} isLoading={highestRatedModels.loading} />
         </ScrollView>
     )
 };
