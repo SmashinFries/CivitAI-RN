@@ -1,11 +1,11 @@
 import { ScrollView, View, useWindowDimensions } from "react-native";
 import { useImageIdQuery, useImagesQuery } from "../../api/api";
 import { Image } from "expo-image";
-import { InteractionBar } from "../../features/images/components/interaction";
-import { StatsBar } from "../../features/images/components/stats";
-import { MetaField } from "../../features/images/components/meta";
 import { useLocalSearchParams } from "expo-router";
 import { ActivityIndicator } from "react-native-paper";
+import { InteractionBar } from "../../components/images/interaction";
+import { StatsBar } from "../../components/images/stats";
+import { MetaField } from "../../components/images/meta";
 
 const ImageDetails = () => {
     const windowSize = useWindowDimensions();

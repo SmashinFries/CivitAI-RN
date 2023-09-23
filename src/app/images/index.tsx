@@ -3,7 +3,7 @@ import { Pressable, View, useWindowDimensions } from 'react-native';
 import { Text } from 'react-native-paper';
 import { CivitAIImage, Period } from '../../api/civitai';
 import Animated from 'react-native-reanimated';
-import { ImageCard } from '../../features/images/components/card';
+import { ImageCard } from '../../components/images/card';
 import { MasonryFlashList } from '@shopify/flash-list';
 import { useImagesQuery } from '../../api/api';
 import { Link, useRouter } from 'expo-router';
