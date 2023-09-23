@@ -43,7 +43,7 @@ export type CivitAIImagesParams = {
     sort?: "Most Reactions" | "Most Comments" | "Newest";
     period?: Period;
     page?: number;
-    imageId?: number;
+    imageId?: number | string;
 }
 
 export type CivitAIImageStats = {

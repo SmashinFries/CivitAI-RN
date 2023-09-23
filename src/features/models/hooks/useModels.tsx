@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useModelsQuery } from "../../../app/api/api";
-import { ModelSort } from "../../../app/api/civitai";
+import { useModelsQuery } from "../../../api/api";
+import { ModelSort } from "../../../api/civitai";
 
 export const useModels = () => {
     const newestModels = useModelsQuery();

@@ -3,7 +3,7 @@ import { List, Text } from 'react-native-paper'
 import { useModels } from "./hooks/useModels";
 import { useCallback, useEffect, useState } from "react";
 import { Image } from 'expo-image'
-import { ModelSort } from "../../app/api/civitai";
+import { ModelSort } from "../../api/civitai";
 import { FlashList } from "@shopify/flash-list";
 import { ModelSection } from "./components/sections";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";

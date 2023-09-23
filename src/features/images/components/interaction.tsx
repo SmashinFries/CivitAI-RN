@@ -6,7 +6,7 @@ import { openWebBrowser } from "../../../utils/web";
 type InteractionBarProps = {
     share_url: string;
     image_url: string;
-    id: number;
+    id: number | string;
 };
 export const InteractionBar = ({id, share_url,image_url }:InteractionBarProps) => {
     const { colors } = useTheme();

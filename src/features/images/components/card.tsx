@@ -2,7 +2,7 @@ import { View, useWindowDimensions } from "react-native";
 import { Text } from "react-native-paper";
 import {Image } from 'expo-image'
 import { LinearGradient } from "expo-linear-gradient";
-import { CivitAIImage } from "../../../app/api/civitai";
+import { CivitAIImage } from "../../../api/civitai";
 
 type ImageCardProps = {
     item: CivitAIImage;

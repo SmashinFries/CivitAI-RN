@@ -1,4 +1,4 @@
-import { View, StyleProp, TextStyle } from 'react-native';
+import { View, StyleProp, TextStyle, Platform } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 import { VariantProp } from 'react-native-paper/lib/typescript/components/Typography/types';
 
@@ -60,3 +60,32 @@ export const ListHeading = ({
         </View>
     );
 };
+
+// export const TabLabel = ({route}:{route: RouteProp<ParamListBase, string>;}) => {
+//     return(
+//         <Text
+//                             maxFontSizeMultiplier={1}
+//                             variant="labelMedium"
+//                             style={[
+//                               {
+//                                 fontSize: 12,
+//     height: 56,
+//     textAlign: 'center',
+//     backgroundColor: 'transparent',
+//     ...(Platform.OS === 'web'
+//       ? {
+//           whiteSpace: 'nowrap',
+//           alignSelf: 'center',
+//         }
+//       : null),
+//                               },
+//                               {
+//                                 color: activeLabelColor,
+//                                 ...font,
+//                               },
+//                             ]}
+//                           >
+//                             {getLabelText({ route })}
+//                           </Text>
+//     );
+// };

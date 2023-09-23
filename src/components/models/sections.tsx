@@ -1,10 +1,10 @@
 import { ActivityIndicator, View, useWindowDimensions } from "react-native";
 import { Text, useTheme} from 'react-native-paper'
 import {FlashList} from "@shopify/flash-list";
-import { CivitAIModelItem, CivitAIModelSearch } from "../../../app/api/civitai";
+import { CivitAIModelItem, CivitAIModelSearch, } from "../../api/civitai";
 import { useCallback } from "react";
 import { ModelCard } from "./card";
-import { ListHeading } from "../../../components/text";
+import { ListHeading } from "../text";
 
 type ModelSectionProps = {
     data: CivitAIModelSearch | undefined;
@@ -18,14 +18,15 @@ export const ModelSection = ({data, isLoading, title}:ModelSectionProps) => {
     const keyExtractor = useCallback((item:CivitAIModelItem, index:number) => index.toString(),[]);
 
     return(
-        <View style={{ marginVertical:5}}>
+        <View style={{ paddingVertical:5}}>
             <ListHeading title={title} titleVariant="headlineMedium" />
-            <View style={{maxHeight:400}}>
+            <View style={{maxHeight:400,}}>
             {(!isLoading) ? <FlashList 
                 data={data?.items}
                 keyExtractor={keyExtractor}
                 renderItem={props => <ModelCard themeColors={colors} {...props} />}
-                estimatedItemSize={206}
+                estimatedItemSize={166}
+                showsHorizontalScrollIndicator={false}
                 horizontal
             /> : <ActivityIndicator size="large" />}
             </View>

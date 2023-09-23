@@ -2,7 +2,7 @@ import { Share, StyleSheet, View } from "react-native";
 import { Text, IconButton, useTheme, Divider, Badge, Avatar } from "react-native-paper";
 import { saveImage } from "../../../utils/images";
 import { openWebBrowser } from "../../../utils/web";
-import { CivitAIImageStats } from "../../../app/api/civitai";
+import { CivitAIImageStats } from "../../../api/civitai";
 
 type StatItemProps = {
     text: string | number;
