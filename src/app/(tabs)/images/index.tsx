@@ -8,6 +8,7 @@ import { MasonryFlashList } from '@shopify/flash-list';
 import { useImagesQuery } from '../../../api/api';
 import { Link, useRouter } from 'expo-router';
 import { useSettingsStore } from '../../../store';
+import { ThemedRefreshControl } from '../../../components/refreshControl';
 
 const ImagesPage = () => {
   const router = useRouter();
@@ -39,8 +40,7 @@ const ImagesPage = () => {
                 renderItem={RenderItem}
                 numColumns={2}
                 estimatedItemSize={271}
-                refreshing={isRefetching}
-                onRefresh={refetch}
+                refreshControl={<ThemedRefreshControl refreshing={isRefetching} onRefresh={refetch} />}
                 onEndReached={fetchNextPage}
                 onEndReachedThreshold={0.7}
             />}

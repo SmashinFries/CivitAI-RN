@@ -6,14 +6,15 @@ import { ActivityIndicator } from "react-native-paper";
 import { InteractionBar } from "../../../components/images/interaction";
 import { StatsBar } from "../../../components/images/stats";
 import { MetaField } from "../../../components/images/meta";
+import { ThemedRefreshControl } from "../../../components/refreshControl";
 
 const ImageDetails = () => {
     const windowSize = useWindowDimensions();
     const { id } = useLocalSearchParams<{ id: string }>();
-    const {data, isFetching} = useImageIdQuery({imageId:id});
+    const {data, isFetching, isRefetching, refetch} = useImageIdQuery({imageId:id});
 
     return(
-        <ScrollView style={{flex:1}}>
+        <ScrollView style={{flex:1}} refreshControl={<ThemedRefreshControl refreshing={isRefetching} onRefresh={refetch} />}>
             {data?.items[0] ? <View>
                 <Image source={{uri: data?.items[0]?.url}} style={{aspectRatio:data?.items[0]?.width/data?.items[0]?.height, alignSelf:'center', width: windowSize.width, maxHeight: windowSize.height/1.5}} />
                 <InteractionBar id={data?.items[0]?.id} image_url={data?.items[0]?.url} share_url={`https://civitai.com/images/${data?.items[0]?.id}`} />

@@ -14,6 +14,7 @@ import RenderHTML from "react-native-render-html";
 import { ModelInfo } from "../../../components/models/sections";
 import { openWebBrowser } from "../../../utils/web";
 import { useSettingsStore } from "../../../store";
+import { ThemedRefreshControl } from "../../../components/refreshControl";
 
 const ModelDetails = () => {
     const { colors } = useTheme();
@@ -69,7 +70,7 @@ const ModelDetails = () => {
                     title: data?.name ?? ''
                 }}
             />
-            <ScrollView style={{flex:1}} refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
+            <ScrollView style={{flex:1}} refreshControl={<ThemedRefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     {data?.modelVersions.map((modelVersion, index) => (
                         <View key={index}  style={{marginHorizontal:10}}> 
