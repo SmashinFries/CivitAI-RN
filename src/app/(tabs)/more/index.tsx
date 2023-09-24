@@ -3,7 +3,7 @@ import { Button, List, Portal, Switch, Text } from 'react-native-paper';
 import { openWebBrowser } from '../../../utils/web';
 import Constants from 'expo-constants';
 import { useSettingsStore, useThemeStore } from '../../../store';
-import { StatusBar } from 'expo-status-bar';
+import { setStatusBarStyle } from 'expo-status-bar';
 import { NSFWLevelDialog } from '../../../components/more/dialogs';
 import { useState } from 'react';
 
@@ -15,6 +15,7 @@ const MorePage = () => {
 
 	const onDarkModeChange = (value: boolean) => {
 		toggleDarkMode(value);
+		setStatusBarStyle(value ? 'light' : 'dark');
 	};
 
 	return(
