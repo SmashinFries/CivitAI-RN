@@ -1,8 +1,8 @@
 import { useWindowDimensions, ScrollView, RefreshControl } from 'react-native';
 import { Text } from 'react-native-paper';
-import { useModelsQuery } from '../../api/api';
-import { ModelSort } from '../../api/civitai';
-import { ModelSection } from '../../components/models/sections';
+import { useModelsQuery } from '../../../api/api';
+import { ModelSort } from '../../../api/civitai';
+import { ModelSection } from '../../../components/models/sections';
 import { useState } from 'react';
 
 const ModelsPage = () => {
