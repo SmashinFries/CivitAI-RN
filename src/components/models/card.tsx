@@ -16,6 +16,7 @@ type ModelCardProps = {
     index: number;
 };
 export const ModelCard = ({item, themeColors}:ModelCardProps) => {
+    const [isBlur, setIsBlur] = useState<boolean>(true);
     
     if (!item || !item?.modelVersions[0]?.images[0]?.url) {
         return null;
@@ -23,9 +24,9 @@ export const ModelCard = ({item, themeColors}:ModelCardProps) => {
 
     return(
         <Link href={`/models/${item.id}`} asChild>
-        <Pressable style={{margin:8, height:280}}>
+        <Pressable onLongPress={() => setIsBlur(prev => !prev)} style={{margin:8, height:280}}>
             <View style={{borderRadius:12, backgroundColor:themeColors.onSurfaceVariant}}>
-                <Image source={{uri: item?.modelVersions[0]?.images[0]?.url}} style={{ borderRadius:12, overflow:'hidden', width:150, height:220}} />
+                <Image source={{uri: item?.modelVersions[0]?.images[0]?.url}} blurRadius={ item.nsfw && isBlur ? 200 : 0} transition={800} style={{ borderRadius:12, overflow:'hidden', width:160, height:230}} />
             </View>
                 {/* <LinearGradient colors={['transparent', '#000']} locations={[0.7, 1]} style={{ borderRadius:12, overflow:'hidden', position:'absolute', justifyContent:'flex-end', alignItems:'center', width:150, height:220}}>
             
