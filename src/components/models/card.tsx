@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Pressable, View } from "react-native";
 import { Image } from 'expo-image';
 import { Text, MD3DarkTheme, IconButton, useTheme } from 'react-native-paper';
 import { LinearGradient } from "expo-linear-gradient";
@@ -8,6 +8,7 @@ import { useSharedValue } from "react-native-reanimated";
 import { MD3Colors } from "react-native-paper/lib/typescript/types";
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Link } from "expo-router";
 
 type ModelCardProps = {
     item: CivitAIModelItem;
@@ -21,7 +22,8 @@ export const ModelCard = ({item, themeColors}:ModelCardProps) => {
     }
 
     return(
-        <View style={{margin:8, height:280}}>
+        <Link href={`/models/${item.id}`} asChild>
+        <Pressable style={{margin:8, height:280}}>
             <View style={{borderRadius:12, backgroundColor:themeColors.onSurfaceVariant}}>
                 <Image source={{uri: item?.modelVersions[0]?.images[0]?.url}} style={{ borderRadius:12, overflow:'hidden', width:150, height:220}} />
             </View>
@@ -33,6 +35,7 @@ export const ModelCard = ({item, themeColors}:ModelCardProps) => {
                 <Text style={{color:themeColors.onPrimaryContainer}}>{item.stats.downloadCount?.toLocaleString()}</Text>
             </View> : null}
             <Text numberOfLines={2} style={{padding:5, width:150, textAlign:'center'}}>{item.name}</Text>
-        </View>
+        </Pressable>
+        </Link>
     )
 };
