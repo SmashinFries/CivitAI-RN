@@ -1,6 +1,6 @@
 import { Pressable, View } from "react-native";
 import { TextInput, useTheme } from "react-native-paper";
-import { copyToClipboard } from "../../../utils/clipboard";
+import { copyToClipboard } from "../../utils/clipboard";
 
 type MetaFieldProps = {
     label: string;
