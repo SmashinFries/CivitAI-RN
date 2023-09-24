@@ -29,20 +29,24 @@ export const useThemeStore = create<ThemeState & ThemeAction>()(
 type SettingsState = {
     showNSFW: boolean;
     maxNSFWLevel: CivitAiNSFW;
+    autoUpdate: boolean;
 }
 
 type SettingsAction = {
     toggleShowNSFW: (mode: SettingsState['showNSFW']) => void;
     setMaxNSFWLevel: (level: SettingsState['maxNSFWLevel']) => void;
+    toggleAutoUpdate: (mode: SettingsState['autoUpdate']) => void;
 };
 
 export const useSettingsStore = create<SettingsState & SettingsAction>()(
     persist(
         (set, get) => ({
+            autoUpdate: get()?.autoUpdate ?? true,
             showNSFW: get()?.showNSFW ?? false,
             maxNSFWLevel: get()?.maxNSFWLevel ?? CivitAiNSFW.None,
             toggleShowNSFW: (mode) => set(() => ({ showNSFW: mode })),
             setMaxNSFWLevel: (level) => set(() => ({ maxNSFWLevel: level })),
+            toggleAutoUpdate: (mode) => set(() => ({ autoUpdate: mode })),
         }),
         {
             name: 'theme-storage',
