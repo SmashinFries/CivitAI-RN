@@ -20,10 +20,15 @@ const fetchModels = async (params:CivitAIModelsParams) => {
     return data;
 };
 
-const fetchModelId = async (id:number) => {
-    const { data } = await CivitAiClient.get<CivitAIModelItem>(model_versions_url+`/${id}`);
+const fetchModel = async (id:number|string|undefined) => {
+    const { data } = await CivitAiClient.get<CivitAIModelItem>(models_url+`/${id}`);
     return data;
 };
+
+// const fetchModelId = async (id:number) => {
+//     const { data } = await CivitAiClient.get<CivitAIModelItem>(model_versions_url+`/${id}`);
+//     return data;
+// };
 
 const fetchImages = async (params:CivitAIImagesParams) => {
     const { data } = await CivitAiClient.get<CivitAIImages>(images_url, {params: params});
@@ -37,7 +42,8 @@ const fetchTags = async (params:CivitAITagsParams) => {
 
 export const useModelsQuery = (params:CivitAIModelsParams) => useQuery(['models', params.sort], () => fetchModels(params));
 
-export const useModelIdQuery = (id:number) => useQuery(['modelId', id], () => fetchModelId(id));
+// export const useModelIdQuery = (id:number) => useQuery(['modelId', id], () => fetchModelId(id));
+export const useModelQuery = (id:number|string|undefined) => useQuery(['model', id], () => fetchModel(id));
 
 export const useImagesQuery = (params:CivitAIImagesParams) => useInfiniteQuery('images', ({pageParam=1}) => fetchImages({...params, page:pageParam}), { getNextPageParam: (lastPage) => lastPage.metadata.currentPage + 1 });
 
