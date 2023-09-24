@@ -7,9 +7,9 @@ import { useState } from 'react';
 
 const ModelsPage = () => {
   const { width, height } = useWindowDimensions();
-  const newestModels = useModelsQuery({ page: 1, sort: ModelSort.Newest, nsfw: false});
-  const mostDownloadedModels = useModelsQuery({ page: 1, sort: ModelSort.MostDownloaded, nsfw: false});
-  const highestRatedModels = useModelsQuery({ page: 1, sort: ModelSort.HighestRated, nsfw: false});
+  const newestModels = useModelsQuery({ page: 1, sort: ModelSort.Newest});
+  const mostDownloadedModels = useModelsQuery({ page: 1, sort: ModelSort.MostDownloaded});
+  const highestRatedModels = useModelsQuery({ page: 1, sort: ModelSort.HighestRated});
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const onRefresh = async() => {

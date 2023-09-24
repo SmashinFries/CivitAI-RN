@@ -12,7 +12,7 @@ const ImagesPage = () => {
   const router = useRouter();
   const { width, height } = useWindowDimensions();
 
-  const {data, fetchNextPage, isFetching, refetch, isRefetching} = useImagesQuery({limit:30, nsfw:"None", sort:"Most Reactions", period: Period.Day});
+  const {data, fetchNextPage, isFetching, refetch, isRefetching} = useImagesQuery({limit:30, sort:"Most Reactions", period: Period.Day});
 
   const allItems = useMemo(
     () => data?.pages.flatMap(page => page.items),
