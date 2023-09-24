@@ -40,7 +40,7 @@ const fetchTags = async (params:CivitAITagsParams) => {
     return data;
 };
 
-export const useModelsQuery = (params:CivitAIModelsParams) => useQuery(['models', params.sort], () => fetchModels(params));
+export const useModelsQuery = (params:CivitAIModelsParams) => useQuery(['models', params], () => fetchModels(params));
 
 // export const useModelIdQuery = (id:number) => useQuery(['modelId', id], () => fetchModelId(id));
 export const useModelQuery = (id:number|string|undefined) => useQuery(['model', id], () => fetchModel(id));
