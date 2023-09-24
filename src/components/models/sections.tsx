@@ -21,7 +21,7 @@ export const ModelSection = ({data, isLoading, title}:ModelSectionProps) => {
     return(
         <View style={{ paddingVertical:5}}>
             <ListHeading title={title} titleVariant="headlineMedium" />
-            <View style={{maxHeight:400,}}>
+            <View style={{maxHeight:400, minHeight:166}}>
             {(!isLoading) ? <FlashList 
                 data={data?.items}
                 keyExtractor={keyExtractor}
