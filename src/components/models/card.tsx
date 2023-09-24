@@ -23,7 +23,7 @@ export const ModelCard = ({item, themeColors}:ModelCardProps) => {
     }
 
     return(
-        <Link href={`/models/${item.id}`} asChild>
+        <Link href={`/model/${item.id}`} asChild>
         <Pressable onLongPress={() => setIsBlur(prev => !prev)} style={{margin:8, height:280}}>
             <View style={{borderRadius:12, backgroundColor:themeColors.onSurfaceVariant}}>
                 <Image source={{uri: item?.modelVersions[0]?.images[0]?.url}} blurRadius={ item.nsfw && isBlur ? 200 : 0} transition={800} style={{ borderRadius:12, overflow:'hidden', width:160, height:230}} />
