@@ -19,7 +19,7 @@ const ImageDetails = () => {
                 <InteractionBar id={data?.items[0]?.id} image_url={data?.items[0]?.url} share_url={`https://civitai.com/images/${data?.items[0]?.id}`} />
                 <StatsBar {...data?.items[0]?.stats} />
                 <MetaField label="Model" value={data?.items[0]?.meta?.Model} />
-                <MetaField label="SD Version" value={data?.items[0]?.meta?.Version} />
+                <MetaField label="Version" value={data?.items[0]?.meta?.Version} />
                 <MetaField label="Resolution" value={data?.items[0]?.meta?.Size} />
                 <MetaField label="Prompt" value={data?.items[0]?.meta?.prompt} />
                 <MetaField label="Negative Prompt" value={data?.items[0]?.meta?.negativePrompt} />
