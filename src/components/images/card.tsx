@@ -5,6 +5,11 @@ import { LinearGradient } from "expo-linear-gradient";
 import { CivitAIImage, CivitAiNSFW, ModelImagesItem } from "../../api/civitai";
 import { useEffect, useState } from "react";
 import { NSFWTag } from "../labels";
+import { Link, router } from "expo-router";
+
+const blurhash =
+  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+
 
 type ImageCardProps = {
     item: CivitAIImage;
@@ -19,13 +24,15 @@ export const ImageCard = ({index, maxHeight, width, item}:ImageCardProps) => {
     }
 
     return(
-        <Pressable onLongPress={() => console.log('test')} style={{ borderRadius:12}}>
-            <Image source={{uri: item?.url}} blurRadius={ item.nsfw && isBlur ? 200 : 0} transition={800} contentFit="cover" style={{ aspectRatio:item?.width/item?.height, borderRadius:12, width:width-8, maxHeight:maxHeight,}} />
+        // <Link href={{pathname:'images/[id]', params:{id:item.id}}} asChild>
+        <Pressable onPress={() => router.push({pathname:'image/[id]', params:{id:item?.id}})} onLongPress={() => setIsBlur(prev => !prev)} style={{ borderRadius:12}}>
+            <Image source={{uri: item?.url}} placeholder={blurhash} blurRadius={ item.nsfw && isBlur ? 200 : 0} transition={800} contentFit="cover" style={{ aspectRatio:item?.width/item?.height, borderRadius:12, width:width-8, maxHeight:maxHeight,}} />
             {/* <LinearGradient colors={['transparent', '#000']} locations={[0.7, 1]} style={{ aspectRatio:item?.width/item?.height, width:width-8, maxHeight:maxHeight, borderRadius:12, overflow:'hidden', position:'absolute', justifyContent:'flex-end'}}>
                 <Text numberOfLines={2} style={{padding:5, color:MD3DarkTheme.colors.onSurface, textAlign:'center'}}>{item.}</Text>
             </LinearGradient> */}
             <NSFWTag nsfw={item.nsfwLevel} />
         </Pressable>
+        // </Link>
     )
 }
 
