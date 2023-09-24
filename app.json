@@ -3,13 +3,14 @@
     "name": "CivitAI-RN",
     "slug": "CivitAI-RN",
     "scheme": "civitai-rn",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "githubUrl": "https://github.com/SmashinFries/CivitAI-RN",
     "updates": {
-      "checkAutomatically": "NEVER"
+      "checkAutomatically": "NEVER",
+      "url": "https://u.expo.dev/4681a90b-4400-40d3-9f51-0fa5d54f31f1"
     },
     "splash": {
       "image": "./assets/splash.png",
@@ -48,6 +49,9 @@
       "eas": {
         "projectId": "4681a90b-4400-40d3-9f51-0fa5d54f31f1"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }
