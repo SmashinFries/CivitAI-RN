@@ -2,6 +2,7 @@
 A silly little app that uses the CivitAI API. You could literally just install the civitai site as an app 🤷‍♂️.
 
 ## To-do
+- [ ] Name change and new icon
 - [ ] Finish adding data
 - [ ] Model filtering
 - [ ] Image filtering
