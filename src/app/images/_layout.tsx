@@ -5,7 +5,7 @@ const ImagesLayout = () => {
     return(
         <Stack screenOptions={{headerShown:true, header:(props) => <PaperHeader {...props} />}}>
             <Stack.Screen name='index' options={{title:'Images'}} />
-            <Stack.Screen name='[id]' options={{title:'Details', header:props => <ImageHeader {...props} />}} />
+            <Stack.Screen name='[id]' options={{title:'Details', header:(props) => <PaperHeader showIcon={false} {...props} />}} />
         </Stack>
     );
 };

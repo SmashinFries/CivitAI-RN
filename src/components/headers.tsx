@@ -25,12 +25,12 @@ import Animated from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 
-export const PaperHeader = ({ navigation, options, route, back }: NativeStackHeaderProps) => {
+export const PaperHeader = ({ navigation, options, route, back, showIcon=true }: NativeStackHeaderProps & {showIcon?:boolean}) => {
     const title = getHeaderTitle(options, route.name);
     return (
         <Appbar.Header>
             {back && <Appbar.BackAction onPress={navigation.goBack} />}
-            <Avatar.Image size={32} style={{backgroundColor:'transparent', marginHorizontal:8}} source={{uri: 'https://github.com/civitai/civitai/blob/main/public/images/favicon-32x32.png?raw=true'}} />
+            {showIcon && <Avatar.Image size={32} style={{backgroundColor:'transparent', marginHorizontal:8}} source={{uri: 'https://github.com/civitai/civitai/blob/main/public/images/favicon-32x32.png?raw=true'}} />}
             <Appbar.Content title={title} />
         </Appbar.Header>
     );
