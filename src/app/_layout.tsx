@@ -18,7 +18,8 @@ const RootLayout = () => {
 			<ThemeProvider value={darkMode ? DarkTheme : LightTheme}>
 				<QueryClientProvider client={queryClient}>
 					<Stack screenOptions={{animation:'slide_from_bottom', headerShown:false}} />
-					<StatusBar style={darkMode ? 'light' : 'dark'} />
+					{/* Never seems to work :( */}
+					{/* <StatusBar style={darkMode ? 'light' : 'dark'} /> */}
 				</QueryClientProvider>
 			</ThemeProvider>
 		</PaperProvider>
