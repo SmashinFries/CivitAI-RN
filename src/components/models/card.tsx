@@ -32,7 +32,7 @@ export const ModelCard = ({item, themeColors}:ModelCardProps) => {
             
             </LinearGradient> */}
             {item.stats.downloadCount ? <View style={{position:'absolute', flexDirection:'row', alignItems:'center', padding:5, borderTopRightRadius:12, borderBottomLeftRadius:12, right:0, top:0, backgroundColor: themeColors.primaryContainer}}>
-                <MaterialCommunityIcons name="download" size={18} />
+                <MaterialCommunityIcons color={themeColors.onPrimaryContainer} name="download" size={18} />
                 <Text style={{color:themeColors.onPrimaryContainer}}>{item.stats.downloadCount?.toLocaleString()}</Text>
             </View> : null}
             <Text numberOfLines={2} style={{padding:5, width:150, textAlign:'center'}}>{item.name}</Text>
