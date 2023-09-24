@@ -32,6 +32,13 @@ export type Creators = {
     metadata: MetaData;
 }
 
+export enum CivitAiNSFW {
+    None = "None",
+    Soft = "Soft",
+    Mature = "Mature",
+    X = "X"
+}
+
 // Image Params and Response
 export type CivitAIImagesParams = {
     limit?: number;
@@ -39,7 +46,7 @@ export type CivitAIImagesParams = {
     modelId?: number;
     modelVersionId?: number;
     username?: string;
-    nsfw?: boolean | "None" | "Soft" | "Mature" | "X";
+    nsfw?: boolean | CivitAiNSFW;
     sort?: "Most Reactions" | "Most Comments" | "Newest";
     period?: Period;
     page?: number;
@@ -62,7 +69,7 @@ export type CivitAIImage = {
     width: number,
     height: number,
     nsfw: boolean,
-    nsfwLevel: string,
+    nsfwLevel: CivitAiNSFW,
     createdAt: string,
     postId: number,
     stats: CivitAIImageStats;
@@ -179,7 +186,7 @@ export type ModelImageMeta = {
 
 export type ModelImagesItem = {
     url: string;
-    nsfw: boolean;
+    nsfw: CivitAiNSFW;
     width: number;
     height: number;
     hash: string;
