@@ -6,7 +6,7 @@ A silly little app that uses the CivitAI API.
 - [ ] Model filtering
 - [ ] Image filtering
 - [ ] Creator pages
-- [ ] NSFW and Theme settings
+- [x] NSFW and Theme settings (next release - v0.0.2 😳)
 
 ## Current State
 First Release is out now. Its very basic and is missing a lot - but its a start!
