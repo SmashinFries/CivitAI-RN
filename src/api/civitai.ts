@@ -216,6 +216,7 @@ export type ModelVersionsItem = {
 export type CivitAIModelItem = {
     id: number;
     name: string;
+    description: string;
     type: ModelTypes;
     poi: boolean;
     nsfw: boolean;
