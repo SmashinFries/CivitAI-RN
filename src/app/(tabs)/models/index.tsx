@@ -4,12 +4,14 @@ import { useModelsQuery } from '../../../api/api';
 import { ModelSort } from '../../../api/civitai';
 import { ModelSection } from '../../../components/models/sections';
 import { useState } from 'react';
+import { useSettingsStore } from '../../../store';
 
 const ModelsPage = () => {
   const { width, height } = useWindowDimensions();
-  const newestModels = useModelsQuery({ page: 1, sort: ModelSort.Newest});
-  const mostDownloadedModels = useModelsQuery({ page: 1, sort: ModelSort.MostDownloaded});
-  const highestRatedModels = useModelsQuery({ page: 1, sort: ModelSort.HighestRated});
+  const {showNSFW} = useSettingsStore();
+  const newestModels = useModelsQuery({ page: 1, nsfw:showNSFW, sort: ModelSort.Newest});
+  const mostDownloadedModels = useModelsQuery({ page: 1, nsfw:showNSFW, sort: ModelSort.MostDownloaded});
+  const highestRatedModels = useModelsQuery({ page: 1, nsfw:showNSFW, sort: ModelSort.HighestRated});
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const onRefresh = async() => {

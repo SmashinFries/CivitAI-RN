@@ -6,13 +6,14 @@ import { RefreshControl } from "react-native-gesture-handler";
 import { ModelVersionTag } from "../../../components/models/tags";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { FlashList, ListRenderItemInfo } from "@shopify/flash-list";
-import { CivitAIImage, CivitAIImages, CivitAIModelItem, ModelImagesItem, ModelVersionsItem, Period } from "../../../api/civitai";
+import { CivitAIImage, CivitAIImages, CivitAIModelItem, CivitAiNSFW, ModelImagesItem, ModelVersionsItem, Period } from "../../../api/civitai";
 import { ImageCard, ModelImageCard } from "../../../components/images/card";
 import { LoadingIcon } from "../../../components/loading";
 import { Button, List, useTheme } from "react-native-paper";
 import RenderHTML from "react-native-render-html";
 import { ModelInfo } from "../../../components/models/sections";
 import { openWebBrowser } from "../../../utils/web";
+import { useSettingsStore } from "../../../store";
 
 const ModelDetails = () => {
     const { colors } = useTheme();
@@ -20,9 +21,10 @@ const ModelDetails = () => {
     const { width } = useWindowDimensions();
     const { id } = useLocalSearchParams<{ id: string }>();
     const {data, isFetching, refetch, isRefetching} = useModelQuery(id);
+    const { showNSFW } = useSettingsStore();
 
     const [versionSelected, setVersionSelected] = useState<ModelVersionsItem|null>(data?.modelVersions[0] ?? null);
-    const images = useImagesQuery({modelVersionId: versionSelected?.id, period:Period.AllTime, sort: 'Most Reactions', username:data?.creator?.username, limit: 30}, data?.creator?.username && versionSelected?.id ? true : false)
+    const images = useImagesQuery({modelVersionId: versionSelected?.id, period:Period.AllTime, nsfw:showNSFW ? undefined : CivitAiNSFW.None, sort: 'Most Reactions', username:data?.creator?.username, limit: 30}, data?.creator?.username && versionSelected?.id ? true : false)
 
     const keyExtractor = useCallback((item:any, index:number) => index.toString(),[]);
 
