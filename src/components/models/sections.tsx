@@ -5,6 +5,7 @@ import { CivitAIModelItem, CivitAIModelSearch, } from "../../api/civitai";
 import { useCallback } from "react";
 import { ModelCard } from "./card";
 import { ListHeading } from "../text";
+import { LoadingIcon } from "../loading";
 
 type ModelSectionProps = {
     data: CivitAIModelSearch | undefined;
@@ -28,7 +29,7 @@ export const ModelSection = ({data, isLoading, title}:ModelSectionProps) => {
                 estimatedItemSize={166}
                 showsHorizontalScrollIndicator={false}
                 horizontal
-            /> : <ActivityIndicator size="large" />}
+            /> : <LoadingIcon />}
             </View>
         </View>
     );
