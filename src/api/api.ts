@@ -45,7 +45,7 @@ export const useModelsQuery = (params:CivitAIModelsParams) => useQuery(['models'
 // export const useModelIdQuery = (id:number) => useQuery(['modelId', id], () => fetchModelId(id));
 export const useModelQuery = (id:number|string|undefined) => useQuery(['model', id], () => fetchModel(id));
 
-export const useImagesQuery = (params:CivitAIImagesParams) => useInfiniteQuery('images', ({pageParam=1}) => fetchImages({...params, page:pageParam}), { getNextPageParam: (lastPage) => lastPage.metadata.currentPage + 1 });
+export const useImagesQuery = (params:CivitAIImagesParams, enabled:boolean=true) => useInfiniteQuery(['images', params], ({pageParam=1}) => fetchImages({...params, page:pageParam}), { enabled:enabled, getNextPageParam: (lastPage) => lastPage.metadata.currentPage + 1 });
 
 export const useImageIdQuery = (params:CivitAIImagesParams) => useQuery(['image', params.imageId], () => fetchImages(params));
 
