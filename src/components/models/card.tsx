@@ -16,7 +16,7 @@ type ModelCardProps = {
 };
 export const ModelCard = ({item, themeColors}:ModelCardProps) => {
     
-    if (!item) {
+    if (!item || !item?.modelVersions[0]?.images[0]?.url) {
         return null;
     }
 
