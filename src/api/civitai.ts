@@ -39,6 +39,12 @@ export enum CivitAiNSFW {
     X = "X"
 }
 
+export enum CivitAiImageSort {
+    MostReactions = "Most Reactions",
+    MostComments = "Most Comments", 
+    Newest = "Newest"
+}
+
 // Image Params and Response
 export type CivitAIImagesParams = {
     limit?: number;
@@ -47,7 +53,7 @@ export type CivitAIImagesParams = {
     modelVersionId?: number;
     username?: string;
     nsfw?: boolean | CivitAiNSFW;
-    sort?: "Most Reactions" | "Most Comments" | "Newest";
+    sort?: CivitAiImageSort;
     period?: Period;
     page?: number;
     imageId?: number | string;
