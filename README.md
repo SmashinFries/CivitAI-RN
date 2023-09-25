@@ -11,6 +11,12 @@ A silly little app that uses the CivitAI API. You could literally just install t
 - [ ] Offline saves (images, models)
 - [ ] Add authentication?
 
+## Limitations
+Currently, the CivitAI REST API is limited.
+- Can't filter images with tags without knowing the tag ID. The tags endpoint doesn't return IDs so theres no way of knowing.
+- Images endpoint doesnt return videos and cant be filtered by format.
+- No authentication.
+
 ## Future Plans
 Basically, just adding any future CivitAI endpoints.
 
