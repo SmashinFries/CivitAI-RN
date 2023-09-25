@@ -1,21 +1,24 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Pressable, View, useWindowDimensions } from 'react-native';
 import { Text } from 'react-native-paper';
-import { CivitAIImage, CivitAiNSFW, Period } from '../../../api/civitai';
+import { CivitAIImage, CivitAIImagesParams, CivitAiImageSort, CivitAiNSFW, Period } from '../../../api/civitai';
 import Animated from 'react-native-reanimated';
 import { ImageCard } from '../../../components/images/card';
 import { MasonryFlashList } from '@shopify/flash-list';
 import { useImagesQuery } from '../../../api/api';
-import { Link, useRouter } from 'expo-router';
+import { Link, Stack, useRouter } from 'expo-router';
 import { useSettingsStore } from '../../../store';
 import { ThemedRefreshControl } from '../../../components/refreshControl';
+import { ImagesHeader, PaperHeader } from '../../../components/headers';
 
 const ImagesPage = () => {
   const router = useRouter();
   const { width, height } = useWindowDimensions();
   const {showNSFW} = useSettingsStore();
 
-  const {data, fetchNextPage, isFetching, refetch, isRefetching} = useImagesQuery({limit:30, sort:"Most Reactions", nsfw:showNSFW ? true : CivitAiNSFW.None, period: Period.Day});
+  const [sort, setSort] = useState<CivitAIImagesParams['sort']>(CivitAiImageSort.MostReactions);
+
+  const {data, fetchNextPage, isFetching, refetch, isRefetching} = useImagesQuery({limit:30, sort:sort, nsfw:showNSFW ? true : CivitAiNSFW.None, period: Period.Day});
 
   const allItems = useMemo(
     () => data?.pages.flatMap(page => page.items),
@@ -30,10 +33,15 @@ const ImagesPage = () => {
                       <ImageCard {...props} maxHeight={height/2} width={width/2} />
                   </Animated.View>
         );
-    },[width, height])
+    },[width, height, sort])
 
   return(
     <View style={{ width: '100%', flex: 1 }}>
+            <Stack.Screen
+                options={{
+                    header: props => <ImagesHeader {...props} sort={sort ?? CivitAiImageSort.MostReactions} updateSort={setSort} />,
+                }}
+            />
             {data && <MasonryFlashList 
                 data={allItems}
                 keyExtractor={keyExtractor}
