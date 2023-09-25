@@ -18,9 +18,9 @@ const ModelsPage = () => {
 
   const onRefresh = async() => {
     setIsRefreshing(true);
-    await newestModels.refetch();
-    await mostDownloadedModels.refetch();
-    await highestRatedModels.refetch();
+    newestModels.refetch();
+    mostDownloadedModels.refetch();
+    highestRatedModels.refetch();
     setIsRefreshing(false);
   };
 
