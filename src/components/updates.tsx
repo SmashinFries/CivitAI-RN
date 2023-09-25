@@ -3,11 +3,15 @@ import * as Updates from 'expo-updates';
 import { useEffect, useState } from 'react';
 
 export const checkForUpdates = async (autoUpdate:boolean=false) => {
-    const results = await Updates.checkForUpdateAsync();
-    if (results.isAvailable) {
-        return results.isAvailable;
+    if (!__DEV__) {
+        const results = await Updates.checkForUpdateAsync();
+        if (results.isAvailable) {
+            return results.isAvailable;
+        } else {
+            return false;
+        }
     } else {
-        return false;
+        return true;
     }
 };
 
