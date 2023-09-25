@@ -23,20 +23,22 @@ export const ModelCard = ({item, themeColors}:ModelCardProps) => {
     }
 
     return(
+        <View style={{width:160, margin:8, }}>
         <Link href={`/model/${item.id}`} asChild>
-        <Pressable onLongPress={() => setIsBlur(prev => !prev)} style={{margin:8, height:280}}>
-            <View style={{borderRadius:12, backgroundColor:themeColors.onSurfaceVariant}}>
-                <Image source={{uri: item?.modelVersions[0]?.images[0]?.url}} blurRadius={ item.nsfw && isBlur ? 200 : 0} transition={800} style={{ borderRadius:12, overflow:'hidden', width:160, height:230}} />
-            </View>
-                {/* <LinearGradient colors={['transparent', '#000']} locations={[0.7, 1]} style={{ borderRadius:12, overflow:'hidden', position:'absolute', justifyContent:'flex-end', alignItems:'center', width:150, height:220}}>
-            
-            </LinearGradient> */}
-            {item.stats.downloadCount ? <View style={{position:'absolute', flexDirection:'row', alignItems:'center', padding:5, borderTopRightRadius:12, borderBottomLeftRadius:12, right:0, top:0, backgroundColor: themeColors.primaryContainer}}>
-                <MaterialCommunityIcons color={themeColors.onPrimaryContainer} name="download" size={18} />
-                <Text style={{color:themeColors.onPrimaryContainer}}>{item.stats.downloadCount?.toLocaleString()}</Text>
-            </View> : null}
-            <Text numberOfLines={2} style={{padding:5, width:150, textAlign:'center'}}>{item.name}</Text>
-        </Pressable>
-        </Link>
+            <Pressable onLongPress={() => setIsBlur(prev => !prev)} style={{height:240}}>
+                <View style={{borderRadius:12, backgroundColor:themeColors.onSurfaceVariant}}>
+                    <Image source={{uri: item?.modelVersions[0]?.images[0]?.url}} blurRadius={ item.nsfw && isBlur ? 200 : 0} transition={800} style={{ borderRadius:12, overflow:'hidden', width:160, height:240}} />
+                </View>
+                    <LinearGradient colors={['transparent', '#000']} locations={[0.7, 1]} style={{ borderRadius:12, overflow:'hidden', position:'absolute', justifyContent:'flex-end', alignItems:'center', width:160, height:240}}>
+                    <Text numberOfLines={2} style={{padding:5, color:MD3DarkTheme.colors.onBackground, width:160, textAlign:'center'}}>{item.name}</Text>
+                </LinearGradient>
+                {item.stats.downloadCount ? <View style={{position:'absolute', flexDirection:'row', alignItems:'center', padding:5, borderTopRightRadius:12, borderBottomLeftRadius:12, right:0, top:0, backgroundColor: themeColors.primaryContainer}}>
+                    <MaterialCommunityIcons color={themeColors.onPrimaryContainer} name="download" size={18} />
+                    <Text style={{color:themeColors.onPrimaryContainer}}>{item.stats.downloadCount?.toLocaleString()}</Text>
+                </View> : null}
+            </Pressable>
+            </Link>
+            <Text numberOfLines={1} variant="labelMedium" style={{padding:5, color:themeColors.onSurfaceVariant, textAlign:'center'}}>{item.type}</Text>
+        </View>
     )
 };
