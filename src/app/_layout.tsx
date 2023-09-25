@@ -17,20 +17,21 @@ const RootLayout = () => {
 	const {autoUpdate} = useSettingsStore();
 	const [showUpdateDialog, setShowUpdateDialog] = useState(false);
 
-	useEffect(() => {
-		if (!__DEV__) {
-			checkForUpdates().then(isAvailable => setShowUpdateDialog(isAvailable));
-		}
-	},[]);
+	// This broke the app \_0-0_/
+	// useEffect(() => {
+	// 	if (!__DEV__) {
+	// 		checkForUpdates().then(isAvailable => setShowUpdateDialog(isAvailable));
+	// 	}
+	// },[]);
 
 	return(
 		<PaperProvider theme={darkMode ? darkTheme : lightTheme}>
 			<ThemeProvider value={darkMode ? DarkTheme : LightTheme}>
 				<QueryClientProvider client={queryClient}>
 					<Stack screenOptions={{animation:'slide_from_bottom', headerShown:false}} />
-					<Portal>
+					{/* <Portal>
                 		<UpdateDialog visible={showUpdateDialog} onDismiss={() => setShowUpdateDialog(false)} autoUpdate={autoUpdate} />
-            		</Portal>
+            		</Portal> */}
 					{/* Never seems to work :( */}
 					{/* <StatusBar style={darkMode ? 'light' : 'dark'} /> */}
 				</QueryClientProvider>
