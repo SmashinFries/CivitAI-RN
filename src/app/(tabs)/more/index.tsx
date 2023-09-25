@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native';
+import { ScrollView, ToastAndroid, View } from 'react-native';
 import { ActivityIndicator, Button, List, Portal, Switch, Text } from 'react-native-paper';
 import { openWebBrowser } from '../../../utils/web';
 import Constants from 'expo-constants';
@@ -28,6 +28,8 @@ const MorePage = () => {
 		setIsCheckingUpdate(false);
 		if (isAvailable) {
 			setShowUpdateDialog(true);
+		} else {
+			ToastAndroid.show('No updates available', ToastAndroid.LONG);
 		}
 	};
 
