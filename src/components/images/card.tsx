@@ -1,12 +1,10 @@
 import { Pressable, View, useWindowDimensions } from "react-native";
-import { Chip, Text } from "react-native-paper";
 import {Image } from 'expo-image'
 import { LinearGradient } from "expo-linear-gradient";
 import { CivitAIImage, CivitAiNSFW, ModelImagesItem } from "../../api/civitai";
 import { useEffect, useMemo, useState } from "react";
-import { NSFWTag } from "../labels";
+import { HasMetaDataTag, NSFWTag } from "../labels";
 import { Link, router } from "expo-router";
-import { useSettingsStore } from "../../store";
 import { useNsfwBlur } from "../../hooks/useNsfwBlur";
 
 const blurhash =
@@ -32,6 +30,7 @@ export const ImageCard = ({maxHeight, width, item}:ImageCardProps) => {
                 <Text numberOfLines={2} style={{padding:5, color:MD3DarkTheme.colors.onSurface, textAlign:'center'}}>{item.}</Text>
             </LinearGradient> */}
             <NSFWTag nsfw={item.nsfwLevel} />
+            <HasMetaDataTag hasMeta={item.meta ? true : false} />
         </Pressable>
     )
 }
