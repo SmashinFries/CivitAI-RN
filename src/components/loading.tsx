@@ -26,7 +26,7 @@ export const LoadingIcon = ({}:LoadingIconProps) => {
     }, []);
 
     return(
-        <Animated.View style={[style, {alignSelf:'center'}]}>
+        <Animated.View style={[style, {flex:1, justifyContent:'center', alignItems:'center'}]}>
             <Image source={{uri:'https://github.com/civitai/civitai/blob/main/public/images/android-chrome-192x192.png?raw=true'}} style={{height:80, width:80}} />
         </Animated.View>
     );
