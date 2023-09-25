@@ -27,9 +27,12 @@ const ImageDetails = () => {
     }
 
     return(
-        <ScrollView contentContainerStyle={{flex:1}} refreshControl={<ThemedRefreshControl refreshing={isRefetching} onRefresh={refetch} />}>
-            {!isFetching && data?.items ? <Pressable onLongPress={toggleBlur}>
-                <Image source={{uri: data?.items[0]?.url}} blurRadius={blurAmount} transition={800} style={{aspectRatio:data?.items[0]?.width/data?.items[0]?.height, alignSelf:'center', width: windowSize.width, maxHeight: windowSize.height/1.5}} />
+        <ScrollView refreshControl={<ThemedRefreshControl refreshing={isRefetching} onRefresh={refetch} />}>
+            {!isFetching && data?.items ? 
+            <View style={{flex:1}}>
+                <Pressable onLongPress={toggleBlur}>
+                    <Image source={{uri: data?.items[0]?.url}} blurRadius={blurAmount} transition={800} style={{aspectRatio:data?.items[0]?.width/data?.items[0]?.height, alignSelf:'center', width: windowSize.width, maxHeight: windowSize.height/1.5}} />
+                </Pressable>
                 <InteractionBar id={data?.items[0]?.id} image_url={data?.items[0]?.url} share_url={`https://civitai.com/images/${data?.items[0]?.id}`} />
                 <StatsBar {...data?.items[0]?.stats} />
                 <MetaField label="Model" value={data?.items[0]?.meta?.Model} />
@@ -40,7 +43,7 @@ const ImageDetails = () => {
                 <MetaField label="Sampler" value={data?.items[0]?.meta?.sampler} />
                 <MetaField label="CFG Scale" value={data?.items[0]?.meta?.cfgScale} />
                 <MetaField label="Clip Skip" value={data?.items[0]?.meta && data?.items[0]?.meta["Clip skip"]} />
-            </Pressable> : <LoadingIcon />}
+            </View> : <LoadingIcon />}
         </ScrollView>
     )
 }
