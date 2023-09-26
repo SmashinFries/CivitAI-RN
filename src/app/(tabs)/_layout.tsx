@@ -20,6 +20,7 @@ const TabLayout = () => {
         <MaterialBottomTabs initialRouteName='models'>
 			<MaterialBottomTabs.Screen name="models" options={{title:'Models', tabBarIcon: 'database-outline'}} />
 			<MaterialBottomTabs.Screen name="images" options={{title:'Images', tabBarIcon: 'image-multiple-outline'}} />
+			<MaterialBottomTabs.Screen name="saves" options={{ title:'Saves', tabBarIcon:'bookmark-outline'}} />
 			<MaterialBottomTabs.Screen name="creators" options={{ title:'Creators', tabBarIcon:'account-outline'}} />
 			<MaterialBottomTabs.Screen name="more" options={{title:'More', tabBarIcon: 'dots-horizontal'}} />
 		</MaterialBottomTabs>
