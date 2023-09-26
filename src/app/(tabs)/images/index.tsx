@@ -33,7 +33,7 @@ const ImagesPage = () => {
                       <ImageCard {...props} maxHeight={height/2} width={width/2} />
                   </Animated.View>
         );
-    },[width, height, sort])
+    },[width, height, sort, data?.pageParams])
 
   return(
     <View style={{ width: '100%', flex: 1 }}>
