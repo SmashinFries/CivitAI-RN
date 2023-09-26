@@ -8,7 +8,7 @@ A silly little app that uses the CivitAI API. You could literally just install t
 - [ ] Image filtering
 - [ ] Creator pages
 - [x] NSFW and Theme settings (v0.0.2)
-- [ ] Offline saves (images, models)
+- [x] Offline saves (images, models)
 - [ ] Add authentication?
 
 ## Limitations
