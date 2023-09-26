@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react';
-import { useQuery, useInfiniteQuery } from 'react-query';
-import { CIVITAI_URL, CivitAIImages, CivitAIImagesParams, CivitAIModelItem, CivitAIModelSearch, CivitAIModelsParams, CivitAITags, CivitAITagsParams, Creators, CreatorsParams } from './civitai';
+import { useQuery, useInfiniteQuery, useQueries, UseQueryOptions, UseQueryResult, QueriesResults } from 'react-query';
+import { CIVITAI_URL, CivitAIImageResource, CivitAIImages, CivitAIImagesParams, CivitAIModelItem, CivitAIModelSearch, CivitAIModelsParams, CivitAITags, CivitAITagsParams, Creators, CreatorsParams } from './civitai';
 
 const CivitAiClient = axios.create({
     baseURL: CIVITAI_URL
@@ -13,7 +13,7 @@ const model_versions_hash_url = model_versions_url+'/by-hash'
 const tags_url = "/tags";
 const images_url = "/images";
 
-
+// useQueries<QueriesResults<CivitAIModelItem[], any>[]>([])
 
 const fetchModels = async (params:CivitAIModelsParams) => {
     const { data } = await CivitAiClient.get<CivitAIModelSearch>(models_url, { params });
@@ -25,10 +25,16 @@ const fetchModel = async (id:number|string|undefined) => {
     return data;
 };
 
-// const fetchModelId = async (id:number) => {
-//     const { data } = await CivitAiClient.get<CivitAIModelItem>(model_versions_url+`/${id}`);
-//     return data;
-// };
+const fetchModelId = async (id:number) => {
+    const { data } = await CivitAiClient.get<CivitAIModelItem>(model_versions_url+`/${id}`);
+    return data;
+};
+
+const fetchModelHash = async (hash: string) => {
+    console.log(model_versions_hash_url+`/${hash}`);
+    const { data } = await CivitAiClient.get<CivitAIModelItem>(model_versions_hash_url+`/${hash}`);
+    return data;
+};
 
 const fetchImages = async (params:CivitAIImagesParams) => {
     const { data } = await CivitAiClient.get<CivitAIImages>(images_url, {params: params});
@@ -44,6 +50,14 @@ export const useModelsQuery = (params:CivitAIModelsParams) => useQuery(['models'
 
 // export const useModelIdQuery = (id:number) => useQuery(['modelId', id], () => fetchModelId(id));
 export const useModelQuery = (id:number|string|undefined) => useQuery(['model', id], () => fetchModel(id));
+export const useModelHashQuery = (hash:string, enabled:boolean=true) => useQuery(['modelHash', hash], () => fetchModelHash(hash),{enabled:enabled});
+// export const useModelHashesQuery = (models:CivitAIImageResource[], enabled:boolean=true) => useQueries<QueriesResults<CivitAIModelItem[], any>[]>(models.map((resource) => {
+//     return {
+//         queryKey: ['model', resource.hash],
+//         queryFn: () => fetchModelHash(resource?.hash),
+//         enabled: enabled
+//     }
+// }));
 
 export const useImagesQuery = (params:CivitAIImagesParams, enabled:boolean=true) => useInfiniteQuery(['images', params], ({pageParam=1}) => fetchImages({...params, page:pageParam}), { enabled:enabled, getNextPageParam: (lastPage) => lastPage.metadata.currentPage + 1 });
 
