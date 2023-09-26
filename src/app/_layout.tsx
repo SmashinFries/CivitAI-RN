@@ -33,7 +33,7 @@ const RootLayout = () => {
                 		<UpdateDialog visible={showUpdateDialog} onDismiss={() => setShowUpdateDialog(false)} autoUpdate={autoUpdate} />
             		</Portal> */}
 					{/* Never seems to work :( */}
-					{/* <StatusBar style={darkMode ? 'light' : 'dark'} /> */}
+					<StatusBar style={darkMode ? 'light' : 'dark'} translucent />
 				</QueryClientProvider>
 			</ThemeProvider>
 		</PaperProvider>
