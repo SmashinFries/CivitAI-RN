@@ -17,7 +17,7 @@ type ImageCardProps = {
     maxHeight: number;
 };
 export const ImageCard = ({maxHeight, width, item}:ImageCardProps) => {
-    const {blurAmount, toggleBlur } = useNsfwBlur(item.nsfwLevel);
+    const {blurAmount, toggleBlur } = useNsfwBlur(item?.nsfwLevel ?? false);
 
     if (!item) {
         return null;
