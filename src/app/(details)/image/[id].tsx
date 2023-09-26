@@ -35,6 +35,7 @@ const ImageDetails = () => {
                 </Pressable>
                 <InteractionBar id={data?.items[0]?.id} image_url={data?.items[0]?.url} share_url={`https://civitai.com/images/${data?.items[0]?.id}`} />
                 <StatsBar {...data?.items[0]?.stats} />
+                <MetaField label="Created At" value={data?.items[0]?.createdAt} />
                 <MetaField label="Model" value={data?.items[0]?.meta?.Model} />
                 <MetaField label="Version" value={data?.items[0]?.meta?.Version} />
                 <MetaField label="Resolution" value={data?.items[0]?.meta?.Size} />
