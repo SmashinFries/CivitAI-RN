@@ -68,6 +68,13 @@ export type CivitAIImageStats = {
     commentCount: number
 }
 
+export type CivitAIImageResource = {
+    type: string;
+    name: string;
+    weight?: number;
+    hash?: string;
+}
+
 export type CivitAIImage = {
     id: number;
     url: string;
@@ -93,6 +100,7 @@ export type CivitAIImage = {
       "Hires upscaler": string,
       negativePrompt: string;
       "Denoising strength": string;
+      resources: CivitAIImageResource[];
     },
     username: string;
 }
