@@ -14,7 +14,7 @@ type ListHeadingProps = {
 };
 export const ListHeading = ({
     title,
-    titleVariant='titleLarge',
+    titleVariant = 'titleLarge',
     subtitle,
     subtitlePress,
     subtitleStyle,

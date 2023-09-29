@@ -1,9 +1,9 @@
-import { ToastAndroid } from "react-native";
+import { ToastAndroid } from 'react-native';
 import * as MediaLibrary from 'expo-media-library';
 import * as FileSystem from 'expo-file-system';
 import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 
-export const downloadImage = async (url: string, name:string|null = null) => {
+export const downloadImage = async (url: string, name: string | null = null) => {
     const { status } = await MediaLibrary.requestPermissionsAsync();
     const formattedTitle = name ?? 'mal_' + url.split('/').pop()?.split('.')[0];
     const fileUri = FileSystem.documentDirectory + formattedTitle + '.jpg';

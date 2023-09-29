@@ -1,6 +1,12 @@
 import { View, useWindowDimensions } from 'react-native';
 import { Button, useTheme } from 'react-native-paper';
-import { TabView, SceneMap, TabBar, SceneRendererProps, NavigationState } from 'react-native-tab-view';
+import {
+    TabView,
+    SceneMap,
+    TabBar,
+    SceneRendererProps,
+    NavigationState,
+} from 'react-native-tab-view';
 import { SavedImage, SavedModel, useSaveStore } from '../../../store';
 import { FlashList, MasonryFlashList } from '@shopify/flash-list';
 import { useCallback, useState } from 'react';
@@ -15,27 +21,29 @@ const SavedImages = () => {
     const { images, removeImage } = useSaveStore();
     const { width, height } = useWindowDimensions();
 
-    const keyExtractor = useCallback((item:SavedImage, index:number) => item.id.toString(),[]);
-    
-    const RenderItem = useCallback(({item, index}:{item:SavedImage, index:number}) => {
-        return(
-            <Animated.View style={{width:width/2, margin:5, maxHeight:height/2}} sharedTransitionTag="ImageDetail">
-                <ImageCard index={index} item={item} maxHeight={height/2} width={width/2} />
+    const keyExtractor = useCallback((item: SavedImage, index: number) => item.id.toString(), []);
+
+    const RenderItem = useCallback(({ item, index }: { item: SavedImage; index: number }) => {
+        return (
+            <Animated.View
+                style={{ width: width / 2, margin: 5, maxHeight: height / 2 }}
+                sharedTransitionTag="ImageDetail"
+            >
+                <ImageCard isSaved={false} item={item} maxHeight={height / 2} width={width / 2} />
                 {/* <Image style={{height:200, width:120}} source={{uri:item.url}} /> */}
             </Animated.View>
         );
-    },[])
+    }, []);
 
-    return(
-        <View style={{ flex: 1, }}>
-            <Button onPress={() => console.log(images.length)}>Test</Button>
-            <MasonryFlashList 
+    return (
+        <View style={{ flex: 1 }}>
+            <MasonryFlashList
                 data={images}
                 keyExtractor={keyExtractor}
                 renderItem={RenderItem}
                 numColumns={2}
                 estimatedItemSize={271}
-                ListEmptyComponent={() => <EmptySavesList tabName='images' />}
+                ListEmptyComponent={() => <EmptySavesList tabName="images" />}
             />
         </View>
     );
@@ -45,48 +53,52 @@ const SavedModels = () => {
     const { models, removeModel } = useSaveStore();
     const { width, height } = useWindowDimensions();
 
-    const keyExtractor = useCallback((item:SavedModel, index:number) => item.id.toString(),[]);
-    
-    const RenderItem = useCallback(({item, index}:{item:SavedModel, index:number}) => {
-        return(
-            <Animated.View style={{width:width/2, margin:5, maxHeight:height/2}} sharedTransitionTag="ImageDetail">
+    const keyExtractor = useCallback((item: SavedModel, index: number) => item.id.toString(), []);
+
+    const RenderItem = useCallback(({ item, index }: { item: SavedModel; index: number }) => {
+        return (
+            <Animated.View
+                style={{ width: width / 2, margin: 5, maxHeight: height / 2 }}
+                sharedTransitionTag="ImageDetail"
+            >
                 <ModelCard item={item} index={index} />
                 {/* <Image style={{height:200, width:120}} source={{uri:item.url}} /> */}
             </Animated.View>
         );
-    },[])
+    }, []);
 
-    return(
-        <View style={{ flex: 1, }}>
-            <FlashList 
+    return (
+        <View style={{ flex: 1 }}>
+            <FlashList
                 data={models}
                 keyExtractor={keyExtractor}
                 renderItem={RenderItem}
                 numColumns={2}
                 centerContent
                 estimatedItemSize={229}
-                ListEmptyComponent={() => <EmptySavesList tabName='models' />}
+                ListEmptyComponent={() => <EmptySavesList tabName="models" />}
             />
         </View>
     );
 };
 
 const renderScene = SceneMap({
-  first: SavedModels,
-  second: SavedImages,
+    first: SavedModels,
+    second: SavedImages,
 });
 
-type RenderTabBarProps = SceneRendererProps & {navigationState: NavigationState<{key: string; title: string;}>;}
-const RenderTabBar = (props:RenderTabBarProps) => {
+type RenderTabBarProps = SceneRendererProps & {
+    navigationState: NavigationState<{ key: string; title: string }>;
+};
+const RenderTabBar = (props: RenderTabBarProps) => {
     const { colors } = useTheme();
-    return(
+    return (
         <TabBar
             {...props}
             indicatorStyle={{ backgroundColor: colors.primary }}
             style={{ backgroundColor: colors.surface }}
-            labelStyle={{color: colors.onSurfaceVariant}}
+            labelStyle={{ color: colors.onSurfaceVariant }}
             activeColor={colors.primary}
-            
         />
     );
 };
@@ -99,15 +111,15 @@ export const SavesPage = () => {
         { key: 'first', title: 'Models' },
         { key: 'second', title: 'Images' },
     ]);
-    return(
+    return (
         <TabView
-        renderTabBar={RenderTabBar}
-        animationEnabled
-      navigationState={{ index, routes }}
-      renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={{ width: layout.width }}
-    />
+            renderTabBar={RenderTabBar}
+            animationEnabled
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            initialLayout={{ width: layout.width }}
+        />
     );
 };
 
