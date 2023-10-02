@@ -4,7 +4,7 @@ import { CivitAiNSFW } from '../api/civitai';
 
 const nsfwLevelOrder = [CivitAiNSFW.None, CivitAiNSFW.Soft, CivitAiNSFW.Mature, CivitAiNSFW.X];
 
-export const useNsfwBlur = (nsfwLevel: CivitAiNSFW | undefined, isNSFW?: boolean) => {
+export const useNsfwBlur = (nsfwLevel: CivitAiNSFW) => {
     const [isBlur, setIsBlur] = useState<boolean>(true);
     const { maxNSFWLevel } = useSettingsStore();
 
