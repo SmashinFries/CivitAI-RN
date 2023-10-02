@@ -63,7 +63,7 @@ const ListItem = ({ title, value }: { title: string; value: string | ModelTypes 
             title={title}
             onPress={() => copyToClipboard(value)}
             right={(props) => (
-                <Text style={{ maxWidth: '50%' }} {...props}>
+                <Text style={[props.style, { color:props.color, maxWidth: '60%', textAlign:'right' }]}>
                     {value}
                 </Text>
             )}
