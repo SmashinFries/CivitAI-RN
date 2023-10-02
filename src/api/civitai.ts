@@ -111,13 +111,13 @@ export type CivitAIImages = {
 };
 
 export enum ModelTypes {
-    'Checkpoint',
-    'TextualInversion',
-    'Hypernetwork',
-    'AestheticGradient',
-    'LORA',
-    'Controlnet',
-    'Poses',
+    Checkpoint = 'Checkpoint',
+    TextualInversion = 'TextualInversion',
+    Hypernetwork = 'Hypernetwork',
+    AestheticGradient = 'AestheticGradient',
+    LORA = 'LORA',
+    Controlnet = 'Controlnet',
+    Poses = 'Poses',
 }
 
 export enum ModelSort {
