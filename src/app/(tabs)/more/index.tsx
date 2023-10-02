@@ -37,19 +37,6 @@ const MorePage = () => {
     return (
         <ScrollView contentContainerStyle={{ flex: 1 }}>
             <List.Item
-                title="Check for Update"
-                onPress={onCheckUpdatePress}
-                right={(props) => isCheckingUpdate && <ActivityIndicator {...props} />}
-            />
-            <List.Item
-                title="Auto Update"
-                description={'Updates and restarts app automatically at startup'}
-                disabled
-                right={(props) => (
-                    <Switch value={autoUpdate} disabled onValueChange={toggleAutoUpdate} />
-                )}
-            />
-            <List.Item
                 title="Dark Mode"
                 right={(props) => <Switch value={darkMode} onValueChange={onDarkModeChange} />}
             />
@@ -62,14 +49,26 @@ const MorePage = () => {
                 onPress={() => setShowNSFWDialog(true)}
                 right={(props) => <Text>{maxNSFWLevel}</Text>}
             />
+            <List.Item
+                title="Check for Update"
+                onPress={onCheckUpdatePress}
+                right={(props) => isCheckingUpdate && <ActivityIndicator {...props} />}
+            />
+            {/* <List.Item
+                title="Auto Update"
+                description={'Updates and restarts app automatically at startup'}
+                disabled
+                right={(props) => (
+                    <Switch value={autoUpdate} disabled onValueChange={toggleAutoUpdate} />
+                )}
+            /> */}
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text variant="titleLarge">
                     Current Version: {Constants.expoConfig?.version}
                     {'\n\n'}
                 </Text>
                 <Text style={{ textAlign: 'center' }}>
-                    This is a very early development build!{'\n\n'}More features are being worked
-                    on, so keep an eye on the github page for updates{'\n\n'}PRs are most
+                    This is a very early development build!{'\n\n'}PRs are most
                     appreciated!
                 </Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
