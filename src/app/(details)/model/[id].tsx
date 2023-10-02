@@ -3,7 +3,7 @@ import { useImagesQuery, useModelQuery } from '../../../api/api';
 import { Image } from 'expo-image';
 import { Stack, Tabs, useLocalSearchParams } from 'expo-router';
 import { RefreshControl } from 'react-native-gesture-handler';
-import { ModelVersionTag } from '../../../components/models/tags';
+import { ModelTags, ModelVersionTag } from '../../../components/models/tags';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { FlashList, ListRenderItemInfo } from '@shopify/flash-list';
 import {
@@ -31,7 +31,7 @@ const ModelDetails = () => {
     const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
     const { width } = useWindowDimensions();
     const { id } = useLocalSearchParams<{ id: string }>();
-    const { data, isFetching, refetch, isRefetching } = useModelQuery(id);
+    const { data, refetch } = useModelQuery(id);
     const { showNSFW } = useSettingsStore();
     const { models, saveModel, removeModel } = useSaveStore();
 
@@ -145,6 +145,15 @@ const ModelDetails = () => {
                     removeItem={() => removeModel(data?.id)}
                     share_url={`https://civitai.com/models/${data?.id}`}
                 />
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {data?.tags.map((tag, index) => (
+                        <View key={index} style={{ margin: 10 }}>
+                            <ModelTags
+                                name={tag}
+                            />
+                        </View>
+                    ))}
+                </ScrollView>
                 {versionSelected && (
                     <ModelInfo
                         type={data?.type}
