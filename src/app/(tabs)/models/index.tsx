@@ -41,17 +41,17 @@ const ModelsPage = () => {
         >
             <ModelSection
                 title={'Newest'}
-                data={newestModels.data}
+                data={newestModels.data?.pages[0]}
                 isLoading={newestModels.isFetching}
             />
             <ModelSection
                 title={'Most Downloaded'}
-                data={mostDownloadedModels.data}
+                data={mostDownloadedModels.data?.pages[0]}
                 isLoading={mostDownloadedModels.isFetching}
             />
             <ModelSection
                 title={'Top Rated'}
-                data={highestRatedModels.data}
+                data={highestRatedModels.data?.pages[0]}
                 isLoading={highestRatedModels.isFetching}
             />
         </ScrollView>

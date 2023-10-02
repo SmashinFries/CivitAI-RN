@@ -1,10 +1,11 @@
 import { Stack } from 'expo-router';
-import { PaperHeader } from '../../../components/headers';
+import { ModelHeader, ModelSearchHeader, PaperHeader } from '../../../components/headers';
 
 const ModelsLayout = () => {
     return (
         <Stack screenOptions={{ title: 'Models', header: (props) => <PaperHeader {...props} /> }}>
-            {/* <Stack.Screen name="[id]" options={{header:(props) => <PaperHeader showIcon={false} {...props} />}} /> */}
+            <Stack.Screen name="index" options={{header:(props) => <ModelHeader {...props} />}} />
+            <Stack.Screen name="search" options={{animation:'none', headerShown:false}} />
         </Stack>
     );
 };

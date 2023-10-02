@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { Stack } from 'expo-router';
 import { PaperProvider, Portal, adaptNavigationTheme } from 'react-native-paper';
 import { ThemeProvider, DarkTheme as NavDarkTheme, DefaultTheme } from '@react-navigation/native';

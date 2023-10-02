@@ -1,31 +1,18 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Appbar,
     Avatar,
     Button,
-    IconButton,
     Menu,
-    Portal,
     Searchbar,
-    Text,
-    useTheme,
 } from 'react-native-paper';
 import { getHeaderTitle } from '@react-navigation/elements';
-import { NativeStackHeaderProps, NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 import {
-    Keyboard,
-    RefreshControlProps,
-    Share,
-    ToastAndroid,
     View,
-    useWindowDimensions,
 } from 'react-native';
-// import {} from 'react'
-import { Image } from 'expo-image';
-import Animated from 'react-native-reanimated';
-import { useNavigation } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { CivitAIImagesParams, CivitAiImageSort } from '../api/civitai';
+import { CivitAiImageSort } from '../api/civitai';
+import { ModelSearchDrawer } from './models/search/drawer';
 
 export const PaperHeader = ({
     navigation,
@@ -48,6 +35,60 @@ export const PaperHeader = ({
                 />
             )}
             <Appbar.Content title={title} />
+        </Appbar.Header>
+    );
+};
+
+export const ModelHeader = ({
+    navigation,
+    options,
+    route,
+    back,
+    showIcon = true,
+}: NativeStackHeaderProps & { showIcon?: boolean }) => {
+    const title = getHeaderTitle(options, route.name);
+    return (
+        <Appbar.Header>
+            {back && <Appbar.BackAction onPress={navigation.goBack} />}
+            {showIcon && (
+                <Avatar.Image
+                    size={32}
+                    style={{ backgroundColor: 'transparent', marginHorizontal: 8 }}
+                    source={{
+                        uri: 'https://github.com/civitai/civitai/blob/main/public/images/favicon-32x32.png?raw=true',
+                    }}
+                />
+            )}
+            <Appbar.Content title={title} />
+            <Appbar.Action icon={'magnify'} onPress={() => navigation.navigate('search')} />
+        </Appbar.Header>
+    );
+};
+
+type ModelSearchHeaderProps = NativeStackHeaderProps & {
+    toggleDrawer: () => void;
+    search: string;
+    updateSearch: (newSearch: string) => void;
+    onSearch: (txt:string) => void;
+};
+export const ModelSearchHeader = ({
+    navigation,
+    options,
+    route,
+    back,
+    toggleDrawer,
+    updateSearch,
+    onSearch,
+    search
+}: ModelSearchHeaderProps) => {
+    const [open, setOpen] = useState<boolean>(false);
+
+    return(
+        <Appbar.Header>
+            {back && <Appbar.BackAction onPress={navigation.goBack} />}
+            <Searchbar value={search} onIconPress={() => onSearch(search)} onClearIconPress={() => {updateSearch(''); onSearch('');}} onChangeText={txt => updateSearch(txt)} onSubmitEditing={(e) => onSearch(e.nativeEvent.text)} style={{flex:1,}} />
+            <Appbar.Action icon={'filter-outline'} onPress={toggleDrawer}/>
+            {/* <ModelSearchDrawer open={open} onOpen={onOpen} onClose={onClose} /> */}
         </Appbar.Header>
     );
 };
