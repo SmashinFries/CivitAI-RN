@@ -4,7 +4,7 @@ A silly little app that uses the CivitAI API. You could literally just install t
 ## To-do
 - [ ] Name change and new icon
 - [ ] Finish adding data
-- [ ] Model filtering
+- [x] Model filtering
 - [ ] Image filtering
 - [ ] Creator pages
 - [x] NSFW and Theme settings (v0.0.2)
