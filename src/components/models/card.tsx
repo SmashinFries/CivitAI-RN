@@ -19,7 +19,7 @@ type ModelCardProps = {
 };
 export const ModelCard = ({ item, isSaved }: ModelCardProps) => {
     const { colors } = useTheme();
-    const { blurAmount, toggleBlur } = useNsfwBlur(undefined);
+    const { blurAmount, toggleBlur } = useNsfwBlur(item?.modelVersions[0]?.images[0]?.nsfw);
 
     if (!item || !item?.modelVersions[0]?.images[0]?.url) {
         return null;
@@ -131,7 +131,7 @@ type ModelResourceCard = {
 };
 export const ModelResourceCard = ({ item, isSaved }: ModelResourceCard) => {
     const { colors } = useTheme();
-    const { blurAmount, toggleBlur } = useNsfwBlur(undefined);
+    const { blurAmount, toggleBlur } = useNsfwBlur(item?.images[0]?.nsfw);
 
     if (!item || !item?.images[0]?.url) {
         return null;
