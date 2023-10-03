@@ -20,14 +20,12 @@ const ModelSearchPage = () => {
 
     const modelSearch = useModelSearch();
 
-    const keyExtractor = (item:CivitAIModelItem, idx:number) => item.id.toString();
+    const keyExtractor = (item: CivitAIModelItem, idx: number) => item.id.toString();
 
     const RenderItem = useCallback(
         (props: { item: CivitAIModelItem; index: number }) => {
             return (
-                <Animated.View
-                    style={{ width: width / 2, margin: 5, maxHeight: height / 2 }}
-                >
+                <Animated.View style={{ width: width / 2, margin: 5, maxHeight: height / 2 }}>
                     <ModelCard
                         {...props}
                         isSaved={models.find((model) => model.id === props.item.id) ? true : false}
@@ -38,15 +36,30 @@ const ModelSearchPage = () => {
         [width, height, models],
     );
 
-    const allItems = useMemo(() => modelSearch.data?.pages.flatMap((page) => page.items), [modelSearch.data]);
+    const allItems = useMemo(
+        () => modelSearch.data?.pages.flatMap((page) => page.items),
+        [modelSearch.data],
+    );
 
-    return(
-        
+    return (
         <>
-            <Stack.Screen options={{headerShown:true, header:(props) => <ModelSearchHeader {...props} updateSearch={(txt) => modelSearch.updateSearch(txt)} toggleDrawer={() => setIsDrawerOpen(prev => !prev)} search={modelSearch.searchQuery} onSearch={(txt) => modelSearch.onSearchPress()} />}} />
-            <ModelSearchDrawer 
-                open={isDrawerOpen} 
-                toggleDrawer={() => setIsDrawerOpen(prev => !prev)} 
+            <Stack.Screen
+                options={{
+                    headerShown: true,
+                    header: (props) => (
+                        <ModelSearchHeader
+                            {...props}
+                            updateSearch={(txt) => modelSearch.updateSearch(txt)}
+                            toggleDrawer={() => setIsDrawerOpen((prev) => !prev)}
+                            search={modelSearch.searchQuery}
+                            onSearch={(txt) => modelSearch.onSearchPress()}
+                        />
+                    ),
+                }}
+            />
+            <ModelSearchDrawer
+                open={isDrawerOpen}
+                toggleDrawer={() => setIsDrawerOpen((prev) => !prev)}
                 nsfw={modelSearch.nsfw}
                 onNsfwChange={modelSearch.updateNsfw}
                 period={modelSearch.period}
@@ -63,21 +76,28 @@ const ModelSearchPage = () => {
                 onSearchChange={modelSearch.updateSearch}
                 onSearchPress={modelSearch.onSearchPress}
             />
-            <View style={{ flex:1, width:width}}>
-                {modelSearch.data ? <MasonryFlashList
-                    data={allItems}
-                    keyExtractor={keyExtractor}
-                    renderItem={RenderItem}
-                    numColumns={2}
-                    estimatedItemSize={271}
-                    keyboardShouldPersistTaps="always"
-                    keyboardDismissMode='on-drag'
-                    refreshControl={
-                        <ThemedRefreshControl refreshing={modelSearch.isRefetching} onRefresh={modelSearch.refetch} />
-                    }
-                    onEndReached={modelSearch.fetchNextPage}
-                    onEndReachedThreshold={0.7}
-                /> : <LoadingIcon />}
+            <View style={{ flex: 1, width: width }}>
+                {modelSearch.data ? (
+                    <MasonryFlashList
+                        data={allItems}
+                        keyExtractor={keyExtractor}
+                        renderItem={RenderItem}
+                        numColumns={2}
+                        estimatedItemSize={271}
+                        keyboardShouldPersistTaps="always"
+                        keyboardDismissMode="on-drag"
+                        refreshControl={
+                            <ThemedRefreshControl
+                                refreshing={modelSearch.isRefetching}
+                                onRefresh={modelSearch.refetch}
+                            />
+                        }
+                        onEndReached={modelSearch.fetchNextPage}
+                        onEndReachedThreshold={0.7}
+                    />
+                ) : (
+                    <LoadingIcon />
+                )}
             </View>
         </>
     );

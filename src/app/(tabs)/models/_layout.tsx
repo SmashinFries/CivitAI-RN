@@ -4,8 +4,11 @@ import { ModelHeader, ModelSearchHeader, PaperHeader } from '../../../components
 const ModelsLayout = () => {
     return (
         <Stack screenOptions={{ title: 'Models', header: (props) => <PaperHeader {...props} /> }}>
-            <Stack.Screen name="index" options={{header:(props) => <ModelHeader {...props} />}} />
-            <Stack.Screen name="search" options={{animation:'none', headerShown:false}} />
+            <Stack.Screen
+                name="index"
+                options={{ header: (props) => <ModelHeader {...props} /> }}
+            />
+            <Stack.Screen name="search" options={{ animation: 'none', headerShown: false }} />
         </Stack>
     );
 };

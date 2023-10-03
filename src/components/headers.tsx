@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
-import {
-    Appbar,
-    Avatar,
-    Button,
-    Menu,
-    Searchbar,
-} from 'react-native-paper';
+import { Appbar, Avatar, Button, Menu, Searchbar } from 'react-native-paper';
 import { getHeaderTitle } from '@react-navigation/elements';
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
-import {
-    View,
-} from 'react-native';
+import { View } from 'react-native';
 import { CivitAiImageSort } from '../api/civitai';
 import { ModelSearchDrawer } from './models/search/drawer';
 
@@ -69,7 +61,7 @@ type ModelSearchHeaderProps = NativeStackHeaderProps & {
     toggleDrawer: () => void;
     search: string;
     updateSearch: (newSearch: string) => void;
-    onSearch: (txt:string) => void;
+    onSearch: (txt: string) => void;
 };
 export const ModelSearchHeader = ({
     navigation,
@@ -79,15 +71,25 @@ export const ModelSearchHeader = ({
     toggleDrawer,
     updateSearch,
     onSearch,
-    search
+    search,
 }: ModelSearchHeaderProps) => {
     const [open, setOpen] = useState<boolean>(false);
 
-    return(
+    return (
         <Appbar.Header>
             {back && <Appbar.BackAction onPress={navigation.goBack} />}
-            <Searchbar value={search} onIconPress={() => onSearch(search)} onClearIconPress={() => {updateSearch(''); onSearch('');}} onChangeText={txt => updateSearch(txt)} onSubmitEditing={(e) => onSearch(e.nativeEvent.text)} style={{flex:1,}} />
-            <Appbar.Action icon={'filter-outline'} onPress={toggleDrawer}/>
+            <Searchbar
+                value={search}
+                onIconPress={() => onSearch(search)}
+                onClearIconPress={() => {
+                    updateSearch('');
+                    onSearch('');
+                }}
+                onChangeText={(txt) => updateSearch(txt)}
+                onSubmitEditing={(e) => onSearch(e.nativeEvent.text)}
+                style={{ flex: 1 }}
+            />
+            <Appbar.Action icon={'filter-outline'} onPress={toggleDrawer} />
             {/* <ModelSearchDrawer open={open} onOpen={onOpen} onClose={onClose} /> */}
         </Appbar.Header>
     );

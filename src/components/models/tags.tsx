@@ -19,14 +19,10 @@ export const ModelVersionTag = ({ name, isSelected, onPress }: ModelVersionTagPr
 };
 
 type ModelTagsProps = {
-    name:string;
+    name: string;
     // could add search functionality here at some point
     onPress?: () => void;
 };
-export const ModelTags = ({name}:ModelTagsProps) => {
-    return(
-        <Chip>
-            {name}
-        </Chip>
-    );
+export const ModelTags = ({ name }: ModelTagsProps) => {
+    return <Chip>{name}</Chip>;
 };

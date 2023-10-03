@@ -63,7 +63,12 @@ const ListItem = ({ title, value }: { title: string; value: string | ModelTypes 
             title={title}
             onPress={() => copyToClipboard(value)}
             right={(props) => (
-                <Text style={[props.style, { color:props.color, maxWidth: '60%', textAlign:'right' }]}>
+                <Text
+                    style={[
+                        props.style,
+                        { color: props.color, maxWidth: '60%', textAlign: 'right' },
+                    ]}
+                >
                     {value}
                 </Text>
             )}
@@ -91,7 +96,7 @@ export const ModelInfo = (items: ModelInfoProps) => {
                 <ListItem title="Type" value={items.type} />
                 <ListItem title="Base Model" value={items.baseModel} />
                 <ListItem title="Downloads" value={items.downloads?.toLocaleString()} />
-                <ListItem title="Uploaded" value={items.uploaded} />
+                <ListItem title="Uploaded" value={new Date(items.uploaded).toDateString()} />
                 <ListItem title="Trigger Words" value={items.triggerWords?.join(', ')} />
                 <ListItem title="AIR" value={items.air} />
             </List.Accordion>

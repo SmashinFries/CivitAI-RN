@@ -68,17 +68,29 @@ const fetchTags = async (params: CivitAITagsParams) => {
     return data;
 };
 
-export const useModelsQuery = (params: CivitAIModelsParams, search?:string, username?:string, tag?:string) =>
+export const useModelsQuery = (
+    params: CivitAIModelsParams,
+    search?: string,
+    username?: string,
+    tag?: string,
+) =>
     useInfiniteQuery(
-        ['models', params], 
-        ({ pageParam = 1 }) => fetchModels({...params, page:pageParam, query:search, username:username, tag:tag}), 
-        {getNextPageParam: (lastPage) => lastPage.metadata.currentPage + 1}
+        ['models', params],
+        ({ pageParam = 1 }) =>
+            fetchModels({
+                ...params,
+                page: pageParam,
+                query: search,
+                username: username,
+                tag: tag,
+            }),
+        { getNextPageParam: (lastPage) => lastPage.metadata.currentPage + 1 },
     );
 
 // export const useModelIdQuery = (id:number) => useQuery(['modelId', id], () => fetchModelId(id));
 export const useModelQuery = (id: number | string | undefined) =>
     useQuery(['model', id], () => fetchModel(id));
-    
+
 export const useModelHashQuery = (hash: string, enabled: boolean = true) =>
     useQuery(['modelHash', hash], () => fetchModelHash(hash), { enabled: enabled });
 export const useModelHashesQuery = (models: CivitAIImageResource[]) =>

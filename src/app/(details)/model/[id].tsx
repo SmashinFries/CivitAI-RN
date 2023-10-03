@@ -1,27 +1,21 @@
 import { ScrollView, View, useWindowDimensions } from 'react-native';
 import { useImagesQuery, useModelQuery } from '../../../api/api';
-import { Image } from 'expo-image';
-import { Stack, Tabs, useLocalSearchParams } from 'expo-router';
-import { RefreshControl } from 'react-native-gesture-handler';
+import { Stack, useLocalSearchParams } from 'expo-router';
 import { ModelTags, ModelVersionTag } from '../../../components/models/tags';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { FlashList, ListRenderItemInfo } from '@shopify/flash-list';
 import {
     CivitAIImage,
-    CivitAIImages,
-    CivitAIModelItem,
     CivitAIModelVersionsItem,
     CivitAiImageSort,
     CivitAiNSFW,
-    ModelImagesItem,
     Period,
 } from '../../../api/civitai';
-import { ImageCard, ModelImageCard } from '../../../components/images/card';
+import { ImageCard } from '../../../components/images/card';
 import { LoadingIcon } from '../../../components/loading';
-import { Button, List, useTheme } from 'react-native-paper';
+import { List, useTheme } from 'react-native-paper';
 import RenderHTML from 'react-native-render-html';
 import { ModelInfo } from '../../../components/models/sections';
-import { openWebBrowser } from '../../../utils/web';
 import { useSaveStore, useSettingsStore } from '../../../store';
 import { ThemedRefreshControl } from '../../../components/refreshControl';
 import { InteractionBar } from '../../../components/interaction';
@@ -148,9 +142,7 @@ const ModelDetails = () => {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     {data?.tags.map((tag, index) => (
                         <View key={index} style={{ margin: 10 }}>
-                            <ModelTags
-                                name={tag}
-                            />
+                            <ModelTags name={tag} />
                         </View>
                     ))}
                 </ScrollView>

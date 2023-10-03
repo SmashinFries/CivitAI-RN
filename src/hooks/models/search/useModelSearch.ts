@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useModelsQuery } from "../../../api/api";
-import { ModelSort, ModelTypes, Period } from "../../../api/civitai";
-import { useSettingsStore } from "../../../store";
+import { useState } from 'react';
+import { useModelsQuery } from '../../../api/api';
+import { ModelSort, ModelTypes, Period } from '../../../api/civitai';
+import { useSettingsStore } from '../../../store';
 
 const useModelSearch = () => {
     const { showNSFW } = useSettingsStore();
@@ -13,7 +13,12 @@ const useModelSearch = () => {
     const [period, setPeriod] = useState<Period>(Period.AllTime);
     const [nsfw, setNsfw] = useState(showNSFW);
 
-    const {data, refetch, fetchNextPage, isFetching, isRefetching} = useModelsQuery({limit:24, sort:sort, types:modelType, period:period, nsfw:nsfw}, searchQuery, usernameQuery, tagQuery)
+    const { data, refetch, fetchNextPage, isFetching, isRefetching } = useModelsQuery(
+        { limit: 24, sort: sort, types: modelType, period: period, nsfw: nsfw },
+        searchQuery,
+        usernameQuery,
+        tagQuery,
+    );
 
     const onSearchPress = () => {
         refetch();
@@ -68,7 +73,7 @@ const useModelSearch = () => {
         updatePeriod,
         updateNsfw,
         onSearchPress,
-    }
+    };
 };
 
 export type ModelSearch = ReturnType<typeof useModelSearch>;

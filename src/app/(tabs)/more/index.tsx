@@ -68,8 +68,7 @@ const MorePage = () => {
                     {'\n\n'}
                 </Text>
                 <Text style={{ textAlign: 'center' }}>
-                    This is a very early development build!{'\n\n'}PRs are most
-                    appreciated!
+                    This is a very early development build!{'\n\n'}PRs are most appreciated!
                 </Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                     <Button
