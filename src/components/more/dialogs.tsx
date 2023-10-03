@@ -9,10 +9,10 @@ type NSFWLevelDialogProps = {
 };
 export const NSFWLevelDialog = ({ visible, onDismiss }: NSFWLevelDialogProps) => {
     const { maxNSFWLevel, setMaxNSFWLevel } = useSettingsStore();
-    const [selectedValue, setSelectedValue] = useState(maxNSFWLevel);
+    const [selectedValue, setSelectedValue] = useState<CivitAiNSFW>(maxNSFWLevel);
 
-    const onConfirm = () => {
-        setMaxNSFWLevel(selectedValue);
+    const onConfirm = (value:CivitAiNSFW) => {
+        setMaxNSFWLevel(value);
         onDismiss();
     };
 
@@ -41,7 +41,7 @@ export const NSFWLevelDialog = ({ visible, onDismiss }: NSFWLevelDialogProps) =>
             </Dialog.Content>
             <Dialog.Actions>
                 <Button onPress={onDismiss}>Cancel</Button>
-                <Button onPress={onConfirm}>Done</Button>
+                <Button onPress={() => onConfirm(selectedValue)}>Done</Button>
             </Dialog.Actions>
         </Dialog>
     );
