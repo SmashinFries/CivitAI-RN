@@ -75,6 +75,8 @@ const ModelSearchPage = () => {
                 search={modelSearch.searchQuery}
                 onSearchChange={modelSearch.updateSearch}
                 onSearchPress={modelSearch.onSearchPress}
+                baseModels={modelSearch.baseModels}
+                onBaseModelsChange={modelSearch.updateBaseModels}
             />
             <View style={{ flex: 1, width: width }}>
                 {modelSearch.data ? (

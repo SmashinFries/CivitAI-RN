@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useModelsQuery } from '../../../api/api';
-import { ModelSort, ModelTypes, Period } from '../../../api/civitai';
+import { BaseModels, ModelSort, ModelTypes, Period } from '../../../api/civitai';
 import { useSettingsStore } from '../../../store';
 
 const useModelSearch = () => {
@@ -12,12 +12,14 @@ const useModelSearch = () => {
     const [modelType, setModelType] = useState<ModelTypes>(ModelTypes.Checkpoint);
     const [period, setPeriod] = useState<Period>(Period.AllTime);
     const [nsfw, setNsfw] = useState(showNSFW);
+    const [baseModels, setBaseModels] = useState<BaseModels|undefined>();
 
     const { data, refetch, fetchNextPage, isFetching, isRefetching } = useModelsQuery(
-        { limit: 24, sort: sort, types: modelType, period: period, nsfw: nsfw },
+        { limit: 24, baseModels:baseModels, sort: sort, types: modelType, period: period, nsfw: nsfw },
         searchQuery,
         usernameQuery,
         tagQuery,
+        
     );
 
     const onSearchPress = () => {
@@ -52,6 +54,10 @@ const useModelSearch = () => {
         setNsfw(nsfw);
     };
 
+    const updateBaseModels = (model: BaseModels|undefined) => {
+        setBaseModels(model);
+    };
+
     return {
         data,
         isFetching,
@@ -65,6 +71,7 @@ const useModelSearch = () => {
         modelType,
         period,
         nsfw,
+        baseModels,
         updateSearch,
         updateUserName,
         updateTag,
@@ -73,6 +80,7 @@ const useModelSearch = () => {
         updatePeriod,
         updateNsfw,
         onSearchPress,
+        updateBaseModels
     };
 };
 

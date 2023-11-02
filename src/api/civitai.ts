@@ -120,6 +120,18 @@ export enum ModelTypes {
     Poses = 'Poses',
 }
 
+export enum BaseModels {
+    SD1_4 = 'SD 1.4',
+    SD1_5 = 'SD 1.5',
+    SD2_0 = 'SD 2.0',
+    SD2_0_768 = 'SD 2.0 768',
+    SD2_1 = 'SD 2.1',
+    SD2_1_768 = 'SD 2.1 768',
+    SD2_1_Unclip = 'SD 2.1 Unclip',
+    SDXL_0_9 = 'SDXL 0.9',
+    SDXL_1_0 = 'SDXL 1.0',
+}
+
 export enum ModelSort {
     HighestRated = 'Highest Rated',
     MostDownloaded = 'Most Downloaded',
@@ -144,6 +156,7 @@ export type CivitAIModelsParams = {
     allowDifferentLicenses?: boolean;
     allowCommercialUse?: boolean;
     nsfw?: boolean;
+    baseModels?: BaseModels;
 };
 
 export type ModelStats = {

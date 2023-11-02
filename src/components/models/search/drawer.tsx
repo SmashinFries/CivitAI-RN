@@ -15,7 +15,7 @@ import {
 } from 'react-native-paper';
 import Animated, { FadeIn, FadeOut, SlideInRight, SlideOutRight } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ModelSort, ModelTypes, Period } from '../../../api/civitai';
+import { BaseModels, ModelSort, ModelTypes, Period } from '../../../api/civitai';
 import { ModelSearch } from '../../../hooks/models/search/useModelSearch';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -98,6 +98,8 @@ type ModelSearchDrawerProps = {
     search: ModelSearch['searchQuery'];
     onSearchChange: ModelSearch['updateSearch'];
     onSearchPress: ModelSearch['onSearchPress'];
+    baseModels: ModelSearch['baseModels'];
+    onBaseModelsChange: ModelSearch['updateBaseModels'];
 };
 export const ModelSearchDrawer = (props: ModelSearchDrawerProps) => {
     const { colors } = useTheme();
@@ -137,6 +139,12 @@ export const ModelSearchDrawer = (props: ModelSearchDrawerProps) => {
                                     selection={props.type}
                                     options={Object.values(ModelTypes)}
                                     onPress={(item) => props.onTypeChange(item)}
+                                />
+                                <Drawer.Item label="Base Models" />
+                                <DrawerMenuButton
+                                    selection={props.baseModels ?? 'All'}
+                                    options={['All', ...Object.values(BaseModels)]}
+                                    onPress={(item) => props.onBaseModelsChange(item === 'All' ? undefined : item)}
                                 />
                                 <Drawer.Item label="Period" />
                                 <DrawerMenuButton
