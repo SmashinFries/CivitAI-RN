@@ -111,13 +111,34 @@ export type CivitAIImages = {
 };
 
 export enum ModelTypes {
+    // "Checkpoint",
+    // "TextualInversion",
+    // "Hypernetwork",
+    // "AestheticGradient",
+    // "LORA",
+    // "LoCon",
+    // "Controlnet",
+    // "Upscaler",
+    // "MotionModule",
+    // "VAE",
+    // "Poses",
+    // "Wildcards",
+    // "Workflows",
+    // "Other"
     Checkpoint = 'Checkpoint',
     TextualInversion = 'TextualInversion',
     Hypernetwork = 'Hypernetwork',
     AestheticGradient = 'AestheticGradient',
     LORA = 'LORA',
+    LoCon = 'LoCon',
     Controlnet = 'Controlnet',
     Poses = 'Poses',
+    Upscaler = 'Upscaler',
+    MotionModule = 'MotionModule',
+    VAE = 'VAE',
+    Wildcards = 'Wildcards',
+    Workflows = 'Workflows',
+    Other = 'Other',
 }
 
 export enum BaseModels {
