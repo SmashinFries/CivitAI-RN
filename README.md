@@ -1,5 +1,5 @@
 # CivitAI React Native
-A silly little app that uses the CivitAI API. You could literally just install the civitai site as an app 🤷‍♂️. If you really really want a native app for browsing CivitAI, then look no further.
+A silly little app that uses the CivitAI API. You could literally just install the civitai site as an app 🤷‍♂️. If you really really don't want the PWA app, then look no further.
 
 ## To-do
 - [ ] Name change ~~and new icon~~
