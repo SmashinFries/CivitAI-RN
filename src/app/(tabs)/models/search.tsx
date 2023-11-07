@@ -3,7 +3,6 @@ import { View, useWindowDimensions } from 'react-native';
 import { ModelSearchHeader } from '../../../components/headers';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ModelSearchDrawer } from '../../../components/models/search/drawer';
-import { Button, Portal, Text } from 'react-native-paper';
 import useModelSearch from '../../../hooks/models/search/useModelSearch';
 import { MasonryFlashList } from '@shopify/flash-list';
 import { CivitAIModelItem } from '../../../api/civitai';
@@ -20,7 +19,7 @@ const ModelSearchPage = () => {
 
     const modelSearch = useModelSearch();
 
-    const keyExtractor = (item: CivitAIModelItem, idx: number) => item.id.toString();
+    const keyExtractor = (item: CivitAIModelItem) => item.id.toString();
 
     const RenderItem = useCallback(
         (props: { item: CivitAIModelItem; index: number }) => {
