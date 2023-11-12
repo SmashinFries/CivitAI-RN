@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import { Stack } from 'expo-router';
 import { PaperProvider, Portal, adaptNavigationTheme } from 'react-native-paper';
 import { ThemeProvider, DarkTheme as NavDarkTheme, DefaultTheme } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar, setStatusBarStyle } from 'expo-status-bar';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { useSettingsStore, useThemeStore } from '../store';
 import { darkTheme, lightTheme } from '../store/themes';
@@ -30,6 +30,10 @@ const RootLayout = () => {
     // 	}
     // },[]);
 
+    useEffect(() => {
+        setStatusBarStyle(darkMode ? 'light' : 'dark');
+    },[darkMode]);
+
     return (
         <PaperProvider theme={darkMode ? darkTheme : lightTheme}>
             <ThemeProvider value={darkMode ? DarkTheme : LightTheme}>
@@ -39,7 +43,6 @@ const RootLayout = () => {
                 		<UpdateDialog visible={showUpdateDialog} onDismiss={() => setShowUpdateDialog(false)} autoUpdate={autoUpdate} />
             		</Portal> */}
                     {/* Never seems to work :( */}
-                    <StatusBar style={darkMode ? 'light' : 'dark'} translucent />
                 </QueryClientProvider>
             </ThemeProvider>
         </PaperProvider>
