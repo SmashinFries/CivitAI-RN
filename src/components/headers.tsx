@@ -73,8 +73,6 @@ export const ModelSearchHeader = ({
     onSearch,
     search,
 }: ModelSearchHeaderProps) => {
-    const [open, setOpen] = useState<boolean>(false);
-
     return (
         <Appbar.Header>
             {back && <Appbar.BackAction onPress={navigation.goBack} />}
