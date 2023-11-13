@@ -20,7 +20,7 @@ const queryClient = new QueryClient();
 
 const RootLayout = () => {
     const { darkMode } = useThemeStore();
-    const { autoUpdate } = useSettingsStore();
+    // const { autoUpdate } = useSettingsStore();
     const [showUpdateDialog, setShowUpdateDialog] = useState(false);
 
     // This broke the app \_0-0_/
@@ -39,10 +39,6 @@ const RootLayout = () => {
             <ThemeProvider value={darkMode ? DarkTheme : LightTheme}>
                 <QueryClientProvider client={queryClient}>
                     <Stack screenOptions={{ animation: 'slide_from_bottom', headerShown: false }} />
-                    {/* <Portal>
-                		<UpdateDialog visible={showUpdateDialog} onDismiss={() => setShowUpdateDialog(false)} autoUpdate={autoUpdate} />
-            		</Portal> */}
-                    {/* Never seems to work :( */}
                 </QueryClientProvider>
             </ThemeProvider>
         </PaperProvider>
