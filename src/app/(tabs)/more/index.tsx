@@ -8,6 +8,7 @@ import { NSFWLevelDialog } from '../../../components/more/dialogs';
 import { useState } from 'react';
 import * as Updates from 'expo-updates';
 import { UpdateDialog, checkForUpdates } from '../../../components/updates';
+import switchTheme from 'react-native-theme-switch-animation';
 
 const MorePage = () => {
     const { darkMode, toggleDarkMode } = useThemeStore();
@@ -19,8 +20,17 @@ const MorePage = () => {
     const [isCheckingUpdate, setIsCheckingUpdate] = useState(false);
 
     const onDarkModeChange = (value: boolean) => {
-        toggleDarkMode(value);
-        setStatusBarStyle(value ? 'light' : 'dark');
+        switchTheme({
+            switchThemeFunction: () => toggleDarkMode(value),
+            animationConfig: {
+                type: 'circular',
+                duration: 900,
+                startingPoint: {
+                  cxRatio: 0.5,
+                  cyRatio: 0.5
+                }
+              },
+        },)
     };
 
     const onCheckUpdatePress = async () => {
