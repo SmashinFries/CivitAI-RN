@@ -6,6 +6,7 @@ import { ModelSection } from '../../../components/models/sections';
 import { useState } from 'react';
 import { useSettingsStore } from '../../../store';
 import { ThemedRefreshControl } from '../../../components/refreshControl';
+import { LoadingIcon } from '../../../components/loading';
 
 const ModelsPage = () => {
     const { width, height } = useWindowDimensions();
@@ -39,21 +40,25 @@ const ModelsPage = () => {
             }
             style={{ flex: 1, width: width }}
         >
-            <ModelSection
-                title={'Newest'}
-                data={newestModels.data?.pages[0]}
-                isLoading={newestModels.isFetching}
-            />
-            <ModelSection
-                title={'Most Downloaded'}
-                data={mostDownloadedModels.data?.pages[0]}
-                isLoading={mostDownloadedModels.isFetching}
-            />
-            <ModelSection
-                title={'Top Rated'}
-                data={highestRatedModels.data?.pages[0]}
-                isLoading={highestRatedModels.isFetching}
-            />
+            {!newestModels.isLoading && !mostDownloadedModels.isLoading && !highestRatedModels.isLoading ?
+                <>
+                    <ModelSection
+                        title={'Newest'}
+                        data={newestModels.data?.pages[0]}
+                        isLoading={newestModels.isFetching}
+                    />
+                    <ModelSection
+                        title={'Most Downloaded'}
+                        data={mostDownloadedModels.data?.pages[0]}
+                        isLoading={mostDownloadedModels.isFetching}
+                    />
+                    <ModelSection
+                        title={'Top Rated'}
+                        data={highestRatedModels.data?.pages[0]}
+                        isLoading={highestRatedModels.isFetching}
+                    />
+                </>
+            : <LoadingIcon />}
         </ScrollView>
     );
 };
