@@ -3,10 +3,8 @@ import { ActivityIndicator, Button, List, Portal, Switch, Text } from 'react-nat
 import { openWebBrowser } from '../../../utils/web';
 import Constants from 'expo-constants';
 import { useSettingsStore, useThemeStore } from '../../../store';
-import { setStatusBarStyle } from 'expo-status-bar';
 import { NSFWLevelDialog } from '../../../components/more/dialogs';
 import { useState } from 'react';
-import * as Updates from 'expo-updates';
 import { UpdateDialog, checkForUpdates } from '../../../components/updates';
 import switchTheme from 'react-native-theme-switch-animation';
 
@@ -21,14 +19,10 @@ const MorePage = () => {
 
     const onDarkModeChange = (value: boolean) => {
         switchTheme({
-            switchThemeFunction: () => toggleDarkMode(value),
+            switchThemeFunction: () => {toggleDarkMode(value)},
             animationConfig: {
-                type: 'circular',
+                type: 'fade',
                 duration: 900,
-                startingPoint: {
-                  cxRatio: 0.5,
-                  cyRatio: 0.5
-                }
               },
         },)
     };
