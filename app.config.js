@@ -1,8 +1,9 @@
-{
-  "expo": {
-    "name": "CivitAI-RN",
+const IS_DEV = process.env.APP_VARIANT === 'development';
+
+export default {
+    "name": IS_DEV ? "CivitAI-RN DEV" : "CivitAI-RN",
     "slug": "CivitAI-RN",
-    "scheme": "civitai-rn",
+    "scheme": IS_DEV ? "civitai-rn-dev" : "civitai-rn",
     "version": "0.0.5",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,7 +29,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.civitAiRN"
+      "package": IS_DEV ? 'com.civitAiRNDev' : "com.civitAiRN"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -53,5 +54,4 @@
     "runtimeVersion": {
       "policy": "sdkVersion"
     }
-  }
 }
