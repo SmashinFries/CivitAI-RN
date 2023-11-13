@@ -28,14 +28,13 @@ export const ModelSection = ({ data, isLoading, title }: ModelSectionProps) => {
         <View style={{ paddingVertical: 5 }}>
             <ListHeading title={title} titleVariant="headlineMedium" />
             <View style={{ maxHeight: 300, minHeight: 250 }}>
-                {!isLoading ? (
                     <FlashList
                         data={data?.items}
                         keyExtractor={keyExtractor}
                         renderItem={(props) => (
                             <ModelCard
                                 isSaved={
-                                    models.find((value) => value.id === props.item.id)
+                                    models?.find((value) => value.id === props.item.id)
                                         ? true
                                         : false
                                 }
@@ -46,9 +45,6 @@ export const ModelSection = ({ data, isLoading, title }: ModelSectionProps) => {
                         showsHorizontalScrollIndicator={false}
                         horizontal
                     />
-                ) : (
-                    <LoadingIcon />
-                )}
             </View>
         </View>
     );
