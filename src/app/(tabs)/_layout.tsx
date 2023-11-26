@@ -31,12 +31,8 @@ const TabLayout = () => {
                 options={{ title: 'Saves', tabBarIcon: 'bookmark-outline' }}
             />
             <MaterialBottomTabs.Screen
-                name="creators"
-                options={{ title: 'Creators', tabBarIcon: 'account-outline' }}
-            />
-            <MaterialBottomTabs.Screen
-                name="more"
-                options={{ title: 'More', tabBarIcon: 'dots-horizontal' }}
+                name="settings"
+                options={{ title: 'Settings', tabBarIcon: 'cog-outline' }}
             />
         </MaterialBottomTabs>
     );

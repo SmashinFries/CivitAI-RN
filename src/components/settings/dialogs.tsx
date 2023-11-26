@@ -21,7 +21,7 @@ export const NSFWLevelDialog = ({ visible, onDismiss }: NSFWLevelDialogProps) =>
             <Dialog.Title>NSFW Level</Dialog.Title>
             <Dialog.Content>
                 <RadioButton.Group
-                    onValueChange={(value) => setSelectedValue(value)}
+                    onValueChange={(value) => setSelectedValue(value as CivitAiNSFW)}
                     value={selectedValue}
                 >
                     <RadioButton.Item

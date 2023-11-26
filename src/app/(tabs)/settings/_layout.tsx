@@ -1,11 +1,11 @@
 import { Stack } from 'expo-router';
 import { PaperHeader } from '../../../components/headers';
 
-const MoreLayout = () => {
+const SettingsLayout = () => {
     return (
         <Stack
             screenOptions={{
-                title: 'More',
+                title: 'Settings',
                 animation: 'slide_from_bottom',
                 header: (props) => <PaperHeader {...props} showIcon={false} />,
             }}
@@ -15,4 +15,4 @@ const MoreLayout = () => {
     );
 };
 
-export default MoreLayout;
+export default SettingsLayout;
