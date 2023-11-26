@@ -5,11 +5,8 @@ A silly little app that uses the CivitAI API. You could literally just install t
 - [ ] Name change ~~and new icon~~
 - [ ] Finish adding data
 - [x] Model filtering (v0.0.5)
-- [ ] Image filtering
-- [ ] Creator pages
 - [x] NSFW and Theme settings (v0.0.2)
 - [x] Offline saves (images, models)
-- [ ] Add authentication?
 
 ## Limitations
 Compared to the official CivitAI site, their REST API is lacking. 
