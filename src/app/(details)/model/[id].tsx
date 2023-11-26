@@ -18,7 +18,7 @@ import RenderHTML from 'react-native-render-html';
 import { ModelInfo } from '../../../components/models/sections';
 import { useSaveStore, useSettingsStore } from '../../../store';
 import { ThemedRefreshControl } from '../../../components/refreshControl';
-import { InteractionBar } from '../../../components/interaction';
+import { InteractionBar, UserBar } from '../../../components/interaction';
 
 const ModelDetails = () => {
     const { colors } = useTheme();
@@ -130,6 +130,13 @@ const ModelDetails = () => {
                         </View>
                     )}
                 </View>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {data?.tags.map((tag, index) => (
+                        <View key={index} style={{ margin: 10 }}>
+                            <ModelTags name={tag} />
+                        </View>
+                    ))}
+                </ScrollView>
                 {/* <Button mode="outlined" style={{marginHorizontal:10}} icon='earth' onPress={() => openWebBrowser(`https://civitai.com/models/${data?.id}`)}>View Site</Button> */}
                 <InteractionBar
                     isSaved={isSaved}
@@ -139,13 +146,7 @@ const ModelDetails = () => {
                     removeItem={() => removeModel(data?.id)}
                     share_url={`https://civitai.com/models/${data?.id}`}
                 />
-                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                    {data?.tags.map((tag, index) => (
-                        <View key={index} style={{ margin: 10 }}>
-                            <ModelTags name={tag} />
-                        </View>
-                    ))}
-                </ScrollView>
+                <UserBar username={data?.creator.username} user_img={data?.creator.image} />
                 {versionSelected && (
                     <ModelInfo
                         type={data?.type}
