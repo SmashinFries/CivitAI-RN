@@ -13,7 +13,7 @@ import {
 } from '../../../api/civitai';
 import { ImageCard } from '../../../components/images/card';
 import { LoadingIcon } from '../../../components/loading';
-import { List, useTheme } from 'react-native-paper';
+import { List, Text, useTheme } from 'react-native-paper';
 import RenderHTML from 'react-native-render-html';
 import { ModelInfo } from '../../../components/models/sections';
 import { useSaveStore, useSettingsStore } from '../../../store';
@@ -103,6 +103,7 @@ const ModelDetails = () => {
                 }
             >
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    <Text variant='titleMedium' style={{textAlignVertical:'center', paddingHorizontal: 10}}>Versions: </Text>
                     {data?.modelVersions.map((modelVersion, index) => (
                         <View key={index} style={{ marginHorizontal: 10 }}>
                             <ModelVersionTag
