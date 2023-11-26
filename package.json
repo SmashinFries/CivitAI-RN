@@ -10,7 +10,8 @@
     "lint": "eslint --ext .tsx --ext .ts src/",
     "lint-fix": "eslint ./src/**/*.tsx --fix",
     "format": "prettier --check ./src",
-    "format-fix": "prettier --write ./src"
+    "format-fix": "prettier --write ./src",
+    "eas-update": "eas update --branch preview --message"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.18.2",
