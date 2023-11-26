@@ -16,7 +16,6 @@ type ModelSectionProps = {
 };
 export const ModelSection = ({ data, isLoading, title }: ModelSectionProps) => {
     const { width, height } = useWindowDimensions();
-    const { colors } = useTheme();
     const { models } = useSaveStore();
 
     const keyExtractor = useCallback(
@@ -27,26 +26,28 @@ export const ModelSection = ({ data, isLoading, title }: ModelSectionProps) => {
     return (
         <View style={{ paddingVertical: 5 }}>
             <ListHeading title={title} titleVariant="headlineMedium" />
-            <View style={{ maxHeight: 300, minHeight: 250 }}>
+            <View style={{ maxHeight: 300, minHeight: 250, width:width}}>
                     {isLoading ? 
                         <LoadingIcon />
-                    : <FlashList
-                        data={data?.items}
-                        keyExtractor={keyExtractor}
-                        renderItem={(props) => (
-                            <ModelCard
-                                isSaved={
-                                    models?.find((value) => value.id === props.item.id)
-                                        ? true
-                                        : false
-                                }
-                                {...props}
-                            />
-                        )}
-                        estimatedItemSize={166}
-                        showsHorizontalScrollIndicator={false}
-                        horizontal
-                    />}
+                    :
+                        <FlashList
+                            data={data?.items}
+                            keyExtractor={keyExtractor}
+                            renderItem={(props) => (
+                                <ModelCard
+                                    isSaved={
+                                        models?.find((value) => value.id === props.item.id)
+                                            ? true
+                                            : false
+                                    }
+                                    {...props}
+                                />
+                            )}
+                            estimatedItemSize={166}
+                            showsHorizontalScrollIndicator={false}
+                            horizontal
+                        />
+                    }
             </View>
         </View>
     );
