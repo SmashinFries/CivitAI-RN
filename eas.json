@@ -6,17 +6,20 @@
     "development": {
       "env": {
         "APP_VARIANT": "development"
-    },
+      },
       "android": {
         "image": "latest"
-    },
+      },
       "developmentClient": true,
       "distribution": "internal",
       "channel": "development"
     },
     "preview": {
       "distribution": "internal",
-      "channel": "preview"
+      "channel": "preview",
+      "android": {
+        "image": "latest"
+      }
     },
     "production": {
       "channel": "production"

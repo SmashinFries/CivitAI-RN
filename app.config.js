@@ -4,7 +4,7 @@ export default {
     "name": IS_DEV ? "CivitAI-RN DEV" : "CivitAI-RN",
     "slug": "CivitAI-RN",
     "scheme": IS_DEV ? "civitai-rn-dev" : "civitai-rn",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
