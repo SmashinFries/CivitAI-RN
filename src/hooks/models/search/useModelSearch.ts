@@ -12,14 +12,20 @@ const useModelSearch = () => {
     const [modelType, setModelType] = useState<ModelTypes>(ModelTypes.Checkpoint);
     const [period, setPeriod] = useState<Period>(Period.AllTime);
     const [nsfw, setNsfw] = useState(showNSFW);
-    const [baseModels, setBaseModels] = useState<BaseModels|undefined>();
+    const [baseModels, setBaseModels] = useState<BaseModels | undefined>();
 
     const { data, refetch, fetchNextPage, isFetching, isRefetching } = useModelsQuery(
-        { limit: 24, baseModels:baseModels, sort: sort, types: modelType, period: period, nsfw: nsfw },
+        {
+            limit: 24,
+            baseModels: baseModels,
+            sort: sort,
+            types: modelType,
+            period: period,
+            nsfw: nsfw,
+        },
         searchQuery,
         usernameQuery,
         tagQuery,
-        
     );
 
     const onSearchPress = () => {
@@ -54,7 +60,7 @@ const useModelSearch = () => {
         setNsfw(nsfw);
     };
 
-    const updateBaseModels = (model: BaseModels|undefined) => {
+    const updateBaseModels = (model: BaseModels | undefined) => {
         setBaseModels(model);
     };
 
@@ -80,7 +86,7 @@ const useModelSearch = () => {
         updatePeriod,
         updateNsfw,
         onSearchPress,
-        updateBaseModels
+        updateBaseModels,
     };
 };
 

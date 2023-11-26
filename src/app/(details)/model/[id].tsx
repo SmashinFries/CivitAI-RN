@@ -103,7 +103,12 @@ const ModelDetails = () => {
                 }
             >
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                    <Text variant='titleMedium' style={{textAlignVertical:'center', paddingHorizontal: 10}}>Versions: </Text>
+                    <Text
+                        variant="titleMedium"
+                        style={{ textAlignVertical: 'center', paddingHorizontal: 10 }}
+                    >
+                        Versions:{' '}
+                    </Text>
                     {data?.modelVersions.map((modelVersion, index) => (
                         <View key={index} style={{ marginHorizontal: 10 }}>
                             <ModelVersionTag

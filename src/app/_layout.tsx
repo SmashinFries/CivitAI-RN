@@ -32,7 +32,7 @@ const RootLayout = () => {
 
     useEffect(() => {
         setStatusBarStyle(darkMode ? 'light' : 'dark');
-    },[darkMode]);
+    }, [darkMode]);
 
     return (
         <PaperProvider theme={darkMode ? darkTheme : lightTheme}>

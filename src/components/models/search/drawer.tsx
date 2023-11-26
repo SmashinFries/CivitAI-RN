@@ -1,14 +1,6 @@
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
-import {
-    Button,
-    Portal,
-    Drawer,
-    useTheme,
-    Menu,
-    Switch,
-    TextInput,
-} from 'react-native-paper';
+import { Button, Portal, Drawer, useTheme, Menu, Switch, TextInput } from 'react-native-paper';
 import Animated, { FadeIn, FadeOut, SlideInRight, SlideOutRight } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BaseModels, ModelSort, ModelTypes, Period } from '../../../api/civitai';
@@ -140,7 +132,13 @@ export const ModelSearchDrawer = (props: ModelSearchDrawerProps) => {
                                 <DrawerMenuButton
                                     selection={props.baseModels ?? 'All'}
                                     options={['All', ...Object.values(BaseModels)]}
-                                    onPress={(item) => props.onBaseModelsChange(item as string === 'All' ? undefined : item as BaseModels)}
+                                    onPress={(item) =>
+                                        props.onBaseModelsChange(
+                                            (item as string) === 'All'
+                                                ? undefined
+                                                : (item as BaseModels),
+                                        )
+                                    }
                                 />
                                 <Drawer.Item label="Period" />
                                 <DrawerMenuButton

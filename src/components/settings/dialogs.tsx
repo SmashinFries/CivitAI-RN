@@ -11,7 +11,7 @@ export const NSFWLevelDialog = ({ visible, onDismiss }: NSFWLevelDialogProps) =>
     const { maxNSFWLevel, setMaxNSFWLevel } = useSettingsStore();
     const [selectedValue, setSelectedValue] = useState<CivitAiNSFW>(maxNSFWLevel);
 
-    const onConfirm = (value:CivitAiNSFW) => {
+    const onConfirm = (value: CivitAiNSFW) => {
         setMaxNSFWLevel(value);
         onDismiss();
     };
