@@ -5,7 +5,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     name: IS_DEV ? "CivitAI-RN DEV" : "CivitAI-RN",
     slug: "CivitAI-RN",
     scheme: IS_DEV ? "civitai-rn-dev" : "civitai-rn",
-    version: "0.0.6",
+    version: "0.0.7",
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "light",
