@@ -27,11 +27,15 @@ const ModelsPage = () => {
 
     const onRefresh = async () => {
         setIsRefreshing(true);
-        newestModels.refetch();
-        mostDownloadedModels.refetch();
-        highestRatedModels.refetch();
+        await newestModels.refetch();
+        await mostDownloadedModels.refetch();
+        await highestRatedModels.refetch();
         setIsRefreshing(false);
     };
+
+    if (newestModels.isLoading || mostDownloadedModels.isLoading || highestRatedModels.isLoading) {
+        return <LoadingIcon />;
+    }
 
     return (
         <ScrollView
@@ -40,25 +44,21 @@ const ModelsPage = () => {
             }
             style={{ flex: 1, width: width }}
         >
-            {!newestModels.isLoading && !mostDownloadedModels.isLoading && !highestRatedModels.isLoading ?
-                <>
-                    <ModelSection
-                        title={'Newest'}
-                        data={newestModels.data?.pages[0]}
-                        isLoading={newestModels.isFetching}
-                    />
-                    <ModelSection
-                        title={'Most Downloaded'}
-                        data={mostDownloadedModels.data?.pages[0]}
-                        isLoading={mostDownloadedModels.isFetching}
-                    />
-                    <ModelSection
-                        title={'Top Rated'}
-                        data={highestRatedModels.data?.pages[0]}
-                        isLoading={highestRatedModels.isFetching}
-                    />
-                </>
-            : <LoadingIcon />}
+            <ModelSection
+                title={'Newest'}
+                data={newestModels.data?.pages[0]}
+                isLoading={newestModels.isFetching}
+            />
+            <ModelSection
+                title={'Most Downloaded'}
+                data={mostDownloadedModels.data?.pages[0]}
+                isLoading={mostDownloadedModels.isFetching}
+            />
+            <ModelSection
+                title={'Top Rated'}
+                data={highestRatedModels.data?.pages[0]}
+                isLoading={highestRatedModels.isFetching}
+            />
         </ScrollView>
     );
 };

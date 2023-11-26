@@ -28,7 +28,9 @@ export const ModelSection = ({ data, isLoading, title }: ModelSectionProps) => {
         <View style={{ paddingVertical: 5 }}>
             <ListHeading title={title} titleVariant="headlineMedium" />
             <View style={{ maxHeight: 300, minHeight: 250 }}>
-                    <FlashList
+                    {isLoading ? 
+                        <LoadingIcon />
+                    : <FlashList
                         data={data?.items}
                         keyExtractor={keyExtractor}
                         renderItem={(props) => (
@@ -44,7 +46,7 @@ export const ModelSection = ({ data, isLoading, title }: ModelSectionProps) => {
                         estimatedItemSize={166}
                         showsHorizontalScrollIndicator={false}
                         horizontal
-                    />
+                    />}
             </View>
         </View>
     );
