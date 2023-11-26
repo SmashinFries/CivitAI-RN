@@ -1,16 +1,12 @@
 import { useState } from 'react';
-import { Pressable, View, useWindowDimensions } from 'react-native';
+import { Pressable, View } from 'react-native';
 import {
-    Appbar,
     Button,
     Portal,
-    Text,
     Drawer,
     useTheme,
     Menu,
-    IconButton,
     Switch,
-    Searchbar,
     TextInput,
 } from 'react-native-paper';
 import Animated, { FadeIn, FadeOut, SlideInRight, SlideOutRight } from 'react-native-reanimated';
@@ -22,7 +18,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 type DrawerMenuButtonProps = {
     selection: string;
     options: string[];
-    onPress: (item: ModelTypes | ModelSort | Period) => void;
+    onPress: (item: ModelTypes | ModelSort | Period | BaseModels) => void;
 };
 const DrawerMenuButton = ({ selection, options, onPress }: DrawerMenuButtonProps) => {
     const [open, setOpen] = useState(false);
@@ -138,25 +134,25 @@ export const ModelSearchDrawer = (props: ModelSearchDrawerProps) => {
                                 <DrawerMenuButton
                                     selection={props.type}
                                     options={Object.values(ModelTypes)}
-                                    onPress={(item) => props.onTypeChange(item)}
+                                    onPress={(item) => props.onTypeChange(item as ModelTypes)}
                                 />
-                                <Drawer.Item label="Base Models" />
+                                <Drawer.Item label="Base Model" />
                                 <DrawerMenuButton
                                     selection={props.baseModels ?? 'All'}
                                     options={['All', ...Object.values(BaseModels)]}
-                                    onPress={(item) => props.onBaseModelsChange(item === 'All' ? undefined : item)}
+                                    onPress={(item) => props.onBaseModelsChange(item as string === 'All' ? undefined : item as BaseModels)}
                                 />
                                 <Drawer.Item label="Period" />
                                 <DrawerMenuButton
                                     selection={props.period}
                                     options={Object.values(Period)}
-                                    onPress={(item) => props.onPeriodChange(item)}
+                                    onPress={(item) => props.onPeriodChange(item as Period)}
                                 />
                                 <Drawer.Item label="Sort" />
                                 <DrawerMenuButton
                                     selection={props.sort}
                                     options={Object.values(ModelSort)}
-                                    onPress={(item) => props.onSortChange(item)}
+                                    onPress={(item) => props.onSortChange(item as ModelSort)}
                                 />
                                 {/* <Drawer.Item
                                 label="Rating"
