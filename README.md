@@ -4,6 +4,7 @@ A silly little app that uses the CivitAI API. You could literally just install t
 ## To-do
 - [ ] Name change ~~and new icon~~
 - [ ] Finish adding data
+- [ ] View community images of a model
 - [x] Model filtering (v0.0.5)
 - [x] NSFW and Theme settings (v0.0.2)
 - [x] Offline saves (images, models)
