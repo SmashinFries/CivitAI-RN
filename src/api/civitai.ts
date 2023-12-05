@@ -144,6 +144,7 @@ export enum ModelTypes {
 export enum BaseModels {
     SD1_4 = 'SD 1.4',
     SD1_5 = 'SD 1.5',
+    SD1_5_LCM = 'SD 1.5 LCM',
     SD2_0 = 'SD 2.0',
     SD2_0_768 = 'SD 2.0 768',
     SD2_1 = 'SD 2.1',
@@ -151,6 +152,12 @@ export enum BaseModels {
     SD2_1_Unclip = 'SD 2.1 Unclip',
     SDXL_0_9 = 'SDXL 0.9',
     SDXL_1_0 = 'SDXL 1.0',
+    SDXL_1_0_LCM = 'SDXL 1.0 LCM',
+    SDXL_Distilled = 'SDXL Distilled',
+    SDXL_Turbo = 'SDXL Turbo',
+    SVD = 'SVD',
+    SVD_XT = 'SVD XT',
+    Other = 'Other',
 }
 
 export enum ModelSort {
