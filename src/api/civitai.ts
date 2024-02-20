@@ -152,11 +152,15 @@ export enum BaseModels {
     SD2_1_Unclip = 'SD 2.1 Unclip',
     SDXL_0_9 = 'SDXL 0.9',
     SDXL_1_0 = 'SDXL 1.0',
+    Pony = 'Pony',
     SDXL_1_0_LCM = 'SDXL 1.0 LCM',
     SDXL_Distilled = 'SDXL Distilled',
     SDXL_Turbo = 'SDXL Turbo',
+    Stable_Cascade = 'Stable Cascade',
     SVD = 'SVD',
     SVD_XT = 'SVD XT',
+    Playground_v2 = 'Playground v2',
+    PixArt_A = 'PixArt a',
     Other = 'Other',
 }
 
